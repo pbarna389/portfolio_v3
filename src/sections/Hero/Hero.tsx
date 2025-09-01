@@ -1,3 +1,9 @@
+import { ProfilePic } from '@components'
+
 export const Hero = () => {
-	return <div>Hero will be here</div>
+	return (
+		<div>
+			<ProfilePic basisNum={50} />
+		</div>
+	)
 }
