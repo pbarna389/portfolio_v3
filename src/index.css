@@ -18,8 +18,13 @@
 }
 
 @layer base {
+	html {
+		font-size: 100%;
+	}
+
 	body {
 		font-family: var(--font-base);
+		font-weight: 500;
 	}
 
 	h1,

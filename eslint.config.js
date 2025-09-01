@@ -36,9 +36,18 @@ export default tseslint
 				'better-tailwindcss': eslintPluginBetterTailwindcss
 			},
 			rules: {
-				...eslintPluginBetterTailwindcss.configs['recommended-error'].rules,
+				...eslintPluginBetterTailwindcss.configs['stylistic-warn'].rules,
 				...reactHooks.configs.recommended.rules,
 				semi: ['error', 'never'],
+				'better-tailwindcss/enforce-consistent-line-wrapping': [
+					'warn',
+					{
+						indent: 'tab',
+						lineBreakStyle: 'windows',
+						classesPerLine: 2,
+						group: 'newLine'
+					}
+				],
 				'@typescript-eslint/semi': ['error', 'never'],
 				'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
 				'@typescript-eslint/no-throw-literal': 0,

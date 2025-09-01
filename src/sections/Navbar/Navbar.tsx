@@ -1,9 +1,16 @@
+import { Link } from '@components'
+
 export const Navbar = () => {
 	return (
-		<nav className="flex flex-row justify-between">
-			<h2>Menu will be here</h2>
-			<h2>Logo</h2>
-			<h2>Hire button</h2>
+		<nav
+			className={`
+				flex flex-row
+				items-center justify-between
+				border-2 border-white
+			`}
+		>
+			<h2>Menu</h2>
+			<Link href="http://localhost:5173">Hire me</Link>
 		</nav>
 	)
 }
