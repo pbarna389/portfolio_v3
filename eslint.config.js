@@ -8,7 +8,6 @@ import eslintJs from '@eslint/js'
 import eslintReact from '@eslint-react/eslint-plugin'
 
 import simpleImportSort from 'eslint-plugin-simple-import-sort'
-import eslintPluginBetterTailwindcss from 'eslint-plugin-better-tailwindcss'
 
 export default tseslint
 	.config(
@@ -32,11 +31,9 @@ export default tseslint
 			plugins: {
 				'react-hooks': reactHooks,
 				'react-refresh': reactRefresh,
-				'simple-import-sort': simpleImportSort,
-				'better-tailwindcss': eslintPluginBetterTailwindcss
+				'simple-import-sort': simpleImportSort
 			},
 			rules: {
-				...eslintPluginBetterTailwindcss.configs['recommended-error'].rules,
 				...reactHooks.configs.recommended.rules,
 				semi: ['error', 'never'],
 				'@typescript-eslint/semi': ['error', 'never'],
@@ -194,14 +191,6 @@ export default tseslint
 				],
 				// Sorting exports (if necessary)
 				'simple-import-sort/exports': 'error'
-			},
-			settings: {
-				'better-tailwindcss': {
-					// tailwindcss 4: the path to the entry file of the css based tailwind config (eg: `src/global.css`)
-					entryPoint: 'src/index.css',
-					// tailwindcss 3: the path to the tailwind config file (eg: `tailwind.config.js`)
-					tailwindConfig: 'tailwind.config.js'
-				}
 			}
 		}
 	)

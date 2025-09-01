@@ -1,7 +1,7 @@
 @import 'tailwindcss';
 
 @theme {
-	--color-bg: #121212;
+	--color-darkBg: #121212;
 
 	--color-darker-300: #bababa;
 	--color-darker-500: #959595;
@@ -12,4 +12,27 @@
 	--color-normal-300: #dfdfdf;
 
 	--color-highlight: #fd6f00;
+
+	--font-heading: 'Raleway', serif;
+	--font-base: 'Lato', sans-serif;
+}
+
+@layer base {
+	html {
+		font-size: 100%;
+	}
+
+	body {
+		font-family: var(--font-base);
+		font-weight: 500;
+	}
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		font-family: var(--font-heading);
+	}
 }
