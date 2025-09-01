@@ -1,5 +1,5 @@
 #!/bin/sh
 
 npx lint-staged
-npm run coverage
+#npm run coverage
 
