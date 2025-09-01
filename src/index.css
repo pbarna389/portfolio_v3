@@ -1,1 +1,15 @@
 @import 'tailwindcss';
+
+@theme {
+	--color-bg: #121212;
+
+	--color-darker-300: #bababa;
+	--color-darker-500: #959595;
+	--color-darker-600: #707070;
+	--color-darker-700: #575757;
+
+	--color-normal-100: #fff;
+	--color-normal-300: #dfdfdf;
+
+	--color-highlight: #fd6f00;
+}
