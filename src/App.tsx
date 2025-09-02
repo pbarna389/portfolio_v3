@@ -1,4 +1,4 @@
-import { About, Hero, Menu, Navbar } from '@section'
+import { About, Hero, Menu, Navbar, Skills } from '@section'
 
 function App() {
 	return (
@@ -10,6 +10,7 @@ function App() {
 			<main className="flex flex-col gap-12 sm:gap-20">
 				<Hero />
 				<About />
+				<Skills />
 			</main>
 		</div>
 	)
