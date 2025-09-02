@@ -7,7 +7,7 @@ function App() {
 				<Navbar />
 				<Menu />
 			</header>
-			<main>
+			<main className="flex flex-col gap-12 sm:gap-20">
 				<Hero />
 				<About />
 			</main>

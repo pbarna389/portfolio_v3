@@ -1,7 +1,8 @@
 import { FaLinkedinIn } from 'react-icons/fa'
 import { FaGithub } from 'react-icons/fa6'
+import { FaDownload } from 'react-icons/fa6'
 
-type IconKeys = 'github' | 'linkedin'
+type IconKeys = 'github' | 'linkedin' | 'download'
 
 type IconsType<Key extends string> = {
 	[Property in Key]: React.ComponentType<React.SVGProps<SVGSVGElement>>
@@ -9,7 +10,8 @@ type IconsType<Key extends string> = {
 
 const Icons: IconsType<IconKeys> = {
 	github: FaGithub,
-	linkedin: FaLinkedinIn
+	linkedin: FaLinkedinIn,
+	download: FaDownload
 }
 
 type IconProps = {
