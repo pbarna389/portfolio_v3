@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 export const Skill = () => {
-	const [progress, setProgress] = useState(65) // percent (0–100)
+	const [progress] = useState(65) // percent (0–100)
 
 	const radius = 50
 	const circumference = 2 * Math.PI * radius
