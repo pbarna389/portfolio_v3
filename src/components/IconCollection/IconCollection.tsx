@@ -12,7 +12,7 @@ export const IconCollection = () => {
 	}, [])
 
 	return (
-		<div className="flex flex-row gap-2 mt-2 justify-center items-center w-full sm:justify-start sm:items-start">
+		<div className="flex flex-row gap-2 mb-8 justify-center items-center w-full sm:justify-start sm:items-start">
 			<IconContext value={value}>
 				<Link
 					href="http://localhost:5173"

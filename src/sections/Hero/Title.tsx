@@ -8,21 +8,21 @@ export const Title = () => {
 			<Background />
 			<h3 className="font-semibold text-md text-darker-700 sm:text-lg">Hi, I am</h3>
 			<h2 className="font-bold text-lg text-darker-500 sm:text-xl">Barnabás Papp</h2>
-			<h1 className="inline-block text-[60px] leading-12 text-center text-transparent font-bold mt-3 bg-gradient-to-r from-darker-700 via-highlight to-darker-700 bg-clip-text sm:text-start sm:text-[70px]">
+			<h1 className="inline-block text-4xl leading-12 text-center text-transparent font-bold mt-8 mb-8  bg-gradient-to-r from-darker-700 via-highlight to-darker-700 bg-clip-text sm:text-start sm:text-[70px]">
 				Frontend Developer
 			</h1>
 			<IconCollection />
-			<div className="flex flex-row gap-2 mt-2">
+			<div className="flex flex-row gap-2 mt-2 mb-4">
 				<Link
 					href="http://localhost:5173"
-					className="bg-highlight text-center text-[14px] pt-1 pb-1 pl-6 pr-6 rounded-sm"
+					className="bg-highlight text-[16px] text-center pt-1 pb-1 pl-6 pr-6 rounded-sm sm:text-[20px]"
 				>
 					Hire me
 				</Link>
 				<Link href="http://localhost:5173" />
 				<Link
 					href="http://localhost:5173"
-					className="border-2 border-darker-500 text-[14px] pt-1 pb-1 pl-6 pr-6 text-darker-500 rounded-sm"
+					className="border-2 border-darker-500 text-[16px] text-center pt-1 pb-1 pl-6 pr-6 text-darker-500 rounded-sm sm:text-[20px]"
 				>
 					Download CV
 				</Link>
