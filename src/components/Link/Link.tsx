@@ -1,7 +1,7 @@
 import type { PropsWithChildren } from 'react'
 
 type LinkProps = PropsWithChildren & {
-	href: `https://${string}` | `http://${string}`
+	href: `https://${string}` | `http://${string}` | `#${string}`
 	className?: string
 	target?: string
 }
