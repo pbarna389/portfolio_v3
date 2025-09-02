@@ -4,6 +4,7 @@ import { FaHtml5 } from 'react-icons/fa'
 import { FaCss3Alt } from 'react-icons/fa'
 import { FaGithub } from 'react-icons/fa6'
 import { FaDownload } from 'react-icons/fa6'
+import { RiNextjsFill } from 'react-icons/ri'
 import { SiGraphql } from 'react-icons/si'
 import { SiJavascript } from 'react-icons/si'
 import { SiTypescript } from 'react-icons/si'
@@ -29,7 +30,8 @@ const Icons: IconsType<IconKeys> = {
 	tanQuery: SiReactquery,
 	redux: SiRedux,
 	graphql: SiGraphql,
-	reactRouter: SiReactrouter
+	reactRouter: SiReactrouter,
+	nextjs: RiNextjsFill
 }
 
 type IconProps = {

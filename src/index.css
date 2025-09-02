@@ -15,15 +15,6 @@
 
 	--font-heading: 'Raleway', serif;
 	--font-base: 'Lato', sans-serif;
-
-	@keyframes spin {
-		from {
-			--p: 0%;
-		}
-		to {
-			--p: 55%;
-		}
-	}
 }
 
 @layer base {

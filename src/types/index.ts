@@ -1,1 +1,1 @@
-export type { HrefTypes, IconKeys, IconsType } from './types'
+export type { ConstantWithLinks, HrefTypes, IconKeys, IconsType } from './types'

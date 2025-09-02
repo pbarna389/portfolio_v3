@@ -1,9 +1,6 @@
-import type { HrefTypes, IconKeys } from '@types'
+import type { ConstantWithLinks } from '@types'
 
-export const PROFILE_LINKS: {
-	link: Exclude<HrefTypes, `#${string}`>
-	name: IconKeys
-}[] = [
+export const PROFILE_LINKS: ConstantWithLinks[] = [
 	{
 		name: 'github',
 		link: 'https://github.com/pbarna389'

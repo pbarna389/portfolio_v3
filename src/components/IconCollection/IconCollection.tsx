@@ -2,6 +2,8 @@ import { useMemo } from 'react'
 
 import { IconContext } from 'react-icons'
 
+import type { SkillsProps } from 'sections/Skills/Skill'
+
 import { Link } from '@components'
 import type { HrefTypes, IconKeys } from '@types'
 
@@ -11,19 +13,49 @@ type IconCollectionProps = {
 	arrayToCreateFrom: {
 		link: Exclude<HrefTypes, `#${string}`>
 		name: IconKeys
+		progress?: number
 	}[]
+	className: string
 	color: `#${string}`
 	size: number
+	component?: React.ComponentType<SkillsProps>
 }
 
 export const IconCollection = ({
 	color,
 	size,
-	arrayToCreateFrom
+	arrayToCreateFrom,
+	component,
+	className
 }: IconCollectionProps) => {
 	const value = useMemo(() => {
 		return { color, size: size.toString() }
 	}, [color, size])
+
+	const Wrapper = component
+
+	if (Wrapper) {
+		return (
+			<div className={className}>
+				<IconContext value={value}>
+					{arrayToCreateFrom.map((el) => (
+						<Wrapper
+							key={`icon-${el.name}`}
+							name={el.name}
+							progress={el.progress ? el.progress : 0}
+						>
+							<Link
+								href={el.link}
+								className="*:hover:text-white flex items-center justify-center"
+							>
+								<Icon name={el.name} />
+							</Link>
+						</Wrapper>
+					))}
+				</IconContext>
+			</div>
+		)
+	}
 
 	return (
 		<div className="flex flex-row gap-2 mb-8 justify-center items-center w-full sm:justify-start sm:items-start">

@@ -1,9 +1,23 @@
+import { IconCollection } from '@components'
+
+import { DEMONSTRATABLE_SKILLS } from './constants'
+
 import { Skill } from './Skill'
 
 export const Skills = () => {
 	return (
-		<section>
-			<Skill />
+		<section
+			id="skills"
+			className="flex flex-col gap-1 justify-center items-center relative sm:gap-10 *:-z-1"
+		>
+			<h1 className="text-lg font-bold text-white lg:text-4xl">Skills</h1>
+			<IconCollection
+				arrayToCreateFrom={DEMONSTRATABLE_SKILLS}
+				color={'#959595'}
+				size={40}
+				component={Skill}
+				className="grid grid-cols-2 sm:grid-cols-6 gap-4"
+			/>
 		</section>
 	)
 }

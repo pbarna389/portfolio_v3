@@ -17,7 +17,12 @@ export const Title = () => {
 			<h1 className="inline-block text-4xl leading-12 text-center text-transparent font-bold mt-8 mb-8  bg-gradient-to-r from-darker-700 via-highlight to-darker-700 bg-clip-text sm:text-start sm:text-[70px]">
 				Frontend Developer
 			</h1>
-			<IconCollection color={'#959595'} size={20} arrayToCreateFrom={PROFILE_LINKS} />
+			<IconCollection
+				color={'#959595'}
+				size={20}
+				arrayToCreateFrom={PROFILE_LINKS}
+				className="flex flex-row gap-2 mb-8 justify-center items-center sm:justify-start sm:items-start"
+			/>
 			<div className="flex flex-row gap-2 mt-2 mb-4">
 				<Link
 					href="http://localhost:5173"
