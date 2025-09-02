@@ -6,7 +6,6 @@ export const Menu = () => {
 	const [open, setOpen] = useState<boolean>(false)
 
 	const handleClick = () => {
-		console.log('clicked')
 		setOpen((prev) => !prev)
 	}
 

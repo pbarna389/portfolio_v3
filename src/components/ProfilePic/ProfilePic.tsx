@@ -7,10 +7,10 @@ type ProfilePicProps = {
 export const ProfilePic = ({ className = '' }: ProfilePicProps) => {
 	return (
 		<div
-			className={`flex flex-col relative basis-1/2 justify-end items-center *:-z-1 border-2 border-white overflow-hidden ${className}`}
+			className={`flex flex-col relative basis-1/2 justify-end items-center border-2 border-white overflow-hidden ${className}`}
 		>
 			<img
-				className="grayscale-100 w-6/7 sm:w-[max(80vw,650px)] md:w-6/7 xl:w-[550px]"
+				className="w-6/7 sm:relative sm:w-[max(80vw,650px)] md:w-6/7 xl:w-[550px] sm:grayscale-100 sm:hover:grayscale-0 transition ease-in-out duration-700"
 				src={img}
 			/>
 		</div>

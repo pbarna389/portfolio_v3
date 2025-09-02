@@ -1,10 +1,12 @@
 import { IconCollection, Link } from '@components'
 
+import { PROFILE_LINKS } from './constants'
+
 import { Background } from './Background'
 
 export const Title = () => {
 	return (
-		<div className="basis-1/2 flex flex-col relative gap-1 justify-center items-center sm:items-start border-2 -z-1 border-white p-4 *:-z-1">
+		<div className="basis-1/2 flex flex-col relative gap-1 justify-center items-center sm:items-start border-2 border-white p-4">
 			<Background />
 			<h3 className="font-semibold text-md text-darker-700 sm:text-lg md:text-xl">
 				Hi, I am
@@ -15,8 +17,12 @@ export const Title = () => {
 			<h1 className="inline-block text-4xl leading-12 text-center text-transparent font-bold mt-8 mb-8  bg-gradient-to-r from-darker-700 via-highlight to-darker-700 bg-clip-text sm:text-start sm:text-[70px]">
 				Frontend Developer
 			</h1>
-			<IconCollection />
-			<div className="flex flex-row gap-2 mt-2 mb-4">
+			<IconCollection
+				size={20}
+				arrayToCreateFrom={PROFILE_LINKS}
+				className="flex flex-row gap-2 mb-8 justify-center items-center sm:justify-start sm:items-start"
+			/>
+			<div className="flex flex-row flex-wrap item-center justify-center gap-2 mt-2 mb-4">
 				<Link
 					href="http://localhost:5173"
 					className="bg-highlight text-[16px] text-center pt-1 pb-1 pl-6 pr-6 rounded-sm sm:text-[20px]"

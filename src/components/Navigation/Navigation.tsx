@@ -13,7 +13,7 @@ export const Navigation = ({
 }: NavigationProps) => {
 	return (
 		<div
-			className={`fixed gap-4 top-0 left-0 z-1 scale-x-0 bg-darkBg/90 backdrop-blur-xs	${open && 'scale-x-100'} ${desktopMode && 'hidden sm:block sm:static sm:bg-transparent sm:backdrop-blur-none scale-x-0 sm:scale-x-100 sm:justify-self-center'}
+			className={`fixed gap-4 top-0 left-0 -z-1 scale-x-0 bg-darkBg/90 backdrop-blur-xs	${open && 'scale-x-100'} ${desktopMode && 'hidden z-1 sm:block sm:static sm:bg-transparent sm:backdrop-blur-none scale-x-0 sm:scale-x-100 sm:justify-self-center'}
 				`}
 		>
 			<ul
@@ -31,7 +31,7 @@ export const Navigation = ({
 				</li>
 				<li onClick={setState}>
 					<Link href="#projects" target="" className="cursor-pointer">
-						Projects
+						Portfolio
 					</Link>
 				</li>
 				<li onClick={setState}>
