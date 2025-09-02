@@ -42,12 +42,12 @@ export const DEMONSTRATABLE_SKILLS: (ConstantWithLinks & { progress: number })[]
 		progress: 50
 	},
 	{
-		name: 'tanQuery',
+		name: 'tanstackQuery',
 		link: 'https://tanstack.com/query/latest',
 		progress: 50
 	},
 	{
-		name: 'redux',
+		name: 'reduxToolkit',
 		link: 'https://redux-toolkit.js.org',
 		progress: 50
 	},

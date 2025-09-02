@@ -23,7 +23,7 @@ export const Title = () => {
 				arrayToCreateFrom={PROFILE_LINKS}
 				className="flex flex-row gap-2 mb-8 justify-center items-center sm:justify-start sm:items-start"
 			/>
-			<div className="flex flex-row gap-2 mt-2 mb-4">
+			<div className="flex flex-row flex-wrap item-center justify-center gap-2 mt-2 mb-4">
 				<Link
 					href="http://localhost:5173"
 					className="bg-highlight text-[16px] text-center pt-1 pb-1 pl-6 pr-6 rounded-sm sm:text-[20px]"

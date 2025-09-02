@@ -47,7 +47,7 @@ export const Skill = ({ name, progress, children }: SkillsProps) => {
 					{children}
 				</div>
 			</div>
-			<span className="capitalize">{name}</span>
+			<span className="capitalize text-center overflow-ellipsis break-keep">{name}</span>
 			<span className="text-xl font-bold">{statusToShow}%</span>
 		</div>
 	)

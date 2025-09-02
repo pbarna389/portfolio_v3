@@ -27,8 +27,8 @@ const Icons: IconsType<IconKeys> = {
 	css: FaCss3Alt,
 	tailwind: SiTailwindcss,
 	strapi: SiStrapi,
-	tanQuery: SiReactquery,
-	redux: SiRedux,
+	tanstackQuery: SiReactquery,
+	reduxToolkit: SiRedux,
 	graphql: SiGraphql,
 	reactRouter: SiReactrouter,
 	nextjs: RiNextjsFill

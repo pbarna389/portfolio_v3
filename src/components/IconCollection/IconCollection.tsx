@@ -5,6 +5,7 @@ import { IconContext } from 'react-icons'
 import type { SkillsProps } from 'sections/Skills/Skill'
 
 import { Link } from '@components'
+import { textConverter } from '@utils'
 import type { HrefTypes, IconKeys } from '@types'
 
 import { Icon } from './Icon'
@@ -41,7 +42,7 @@ export const IconCollection = ({
 					{arrayToCreateFrom.map((el) => (
 						<Wrapper
 							key={`icon-${el.name}`}
-							name={el.name}
+							name={textConverter(el.name)}
 							progress={el.progress ? el.progress : 0}
 						>
 							<Link
