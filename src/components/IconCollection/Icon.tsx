@@ -41,5 +41,5 @@ type IconProps = {
 export const Icon = ({ name, ...props }: IconProps) => {
 	const Component = Icons[name]
 
-	return <Component {...props} />
+	return <Component {...props} fill="currentColor" />
 }

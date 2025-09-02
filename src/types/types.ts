@@ -22,6 +22,7 @@ export type IconsType<Key extends string> = {
 export type HrefTypes = `https://${string}` | `http://${string}` | `#${string}`
 
 export type ConstantWithLinks = {
+	highlightColor: string
 	link: Exclude<HrefTypes, `#${string}`>
 	name: IconKeys
 }

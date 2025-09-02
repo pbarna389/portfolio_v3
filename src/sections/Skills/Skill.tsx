@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 export type SkillsProps = React.PropsWithChildren & {
 	name: string
 	progress: number
+	highlightColor?: string
 }
 
 export const Skill = ({ name, progress, children }: SkillsProps) => {

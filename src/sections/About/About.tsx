@@ -4,7 +4,7 @@ export const About = () => {
 	return (
 		<section
 			id="about"
-			className="flex flex-col gap-2 justify-center items-center relative sm:justify-between sm:gap-10 *:-z-1"
+			className="flex flex-col gap-2 justify-center items-center relative sm:justify-between sm:gap-10"
 		>
 			<div className="flex flex-col gap-1 justify-center items-center">
 				<h2 className="text-lg font-bold text-white lg:text-4xl">About Me</h2>

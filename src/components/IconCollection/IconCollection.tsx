@@ -8,30 +8,31 @@ import { Link } from '@components'
 import { textConverter } from '@utils'
 import type { HrefTypes, IconKeys } from '@types'
 
+import { HIGHLIGHT_CLASSES, HOVER_HIGHLIGHT } from './constants'
+
 import { Icon } from './Icon'
 
 type IconCollectionProps = {
 	arrayToCreateFrom: {
 		link: Exclude<HrefTypes, `#${string}`>
 		name: IconKeys
+		highlightColor?: string
 		progress?: number
 	}[]
 	className: string
-	color: `#${string}`
 	size: number
 	component?: React.ComponentType<SkillsProps>
 }
 
 export const IconCollection = ({
-	color,
 	size,
 	arrayToCreateFrom,
 	component,
 	className
 }: IconCollectionProps) => {
 	const value = useMemo(() => {
-		return { color, size: size.toString() }
-	}, [color, size])
+		return { size: size.toString() }
+	}, [size])
 
 	const Wrapper = component
 
@@ -39,20 +40,23 @@ export const IconCollection = ({
 		return (
 			<div className={className}>
 				<IconContext value={value}>
-					{arrayToCreateFrom.map((el) => (
-						<Wrapper
-							key={`icon-${el.name}`}
-							name={textConverter(el.name)}
-							progress={el.progress ? el.progress : 0}
-						>
-							<Link
-								href={el.link}
-								className="*:hover:text-white flex items-center justify-center"
+					{arrayToCreateFrom.map((el) => {
+						return (
+							<Wrapper
+								key={`icon-${el.name}`}
+								name={textConverter(el.name)}
+								progress={el.progress ? el.progress : 0}
+								highlightColor={el.highlightColor}
 							>
-								<Icon name={el.name} />
-							</Link>
-						</Wrapper>
-					))}
+								<Link
+									href={el.link}
+									className={`flex items-center justify-center transition transform hover:scale-125 sm:text-[#959595] ${HIGHLIGHT_CLASSES[el.name]} ${HOVER_HIGHLIGHT[el.name]} hover:brightness-125`}
+								>
+									<Icon name={el.name} className={`fill-current transition`} />
+								</Link>
+							</Wrapper>
+						)
+					})}
 				</IconContext>
 			</div>
 		)
@@ -61,15 +65,17 @@ export const IconCollection = ({
 	return (
 		<div className="flex flex-row gap-2 mb-8 justify-center items-center w-full sm:justify-start sm:items-start">
 			<IconContext value={value}>
-				{arrayToCreateFrom.map((el) => (
-					<Link
-						key={`icon-${el.name}`}
-						href={el.link}
-						className="*:hover:text-white flex items-center justify-center p-2 border-1 border-darker-700 bg-white/4 rounded-full h-8 w-8"
-					>
-						<Icon name={el.name} />
-					</Link>
-				))}
+				{arrayToCreateFrom.map((el) => {
+					return (
+						<Link
+							key={`icon-${el.name}`}
+							href={el.link}
+							className={`flex items-center justify-center p-2 border-1 border-darker-700 bg-white/4 rounded-full h-8 w-8 hover:border-darker-400 hover:bg-white/12 hover:scale-125 transition ${HIGHLIGHT_CLASSES[el.name]} sm:text-[#959595] ${HOVER_HIGHLIGHT[el.name]} hover:brightness-125 `}
+						>
+							<Icon name={el.name} className={`fill-current transition`} />
+						</Link>
+					)
+				})}
 			</IconContext>
 		</div>
 	)

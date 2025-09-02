@@ -6,7 +6,7 @@ import { Background } from './Background'
 
 export const Title = () => {
 	return (
-		<div className="basis-1/2 flex flex-col relative gap-1 justify-center items-center sm:items-start border-2 -z-1 border-white p-4 *:-z-1">
+		<div className="basis-1/2 flex flex-col relative gap-1 justify-center items-center sm:items-start border-2 border-white p-4">
 			<Background />
 			<h3 className="font-semibold text-md text-darker-700 sm:text-lg md:text-xl">
 				Hi, I am
@@ -18,7 +18,6 @@ export const Title = () => {
 				Frontend Developer
 			</h1>
 			<IconCollection
-				color={'#959595'}
 				size={20}
 				arrayToCreateFrom={PROFILE_LINKS}
 				className="flex flex-row gap-2 mb-8 justify-center items-center sm:justify-start sm:items-start"
