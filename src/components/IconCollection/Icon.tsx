@@ -4,26 +4,16 @@ import { FaHtml5 } from 'react-icons/fa'
 import { FaCss3Alt } from 'react-icons/fa'
 import { FaGithub } from 'react-icons/fa6'
 import { FaDownload } from 'react-icons/fa6'
+import { SiGraphql } from 'react-icons/si'
 import { SiJavascript } from 'react-icons/si'
 import { SiTypescript } from 'react-icons/si'
 import { SiTailwindcss } from 'react-icons/si'
 import { SiStrapi } from 'react-icons/si'
+import { SiReactquery } from 'react-icons/si'
+import { SiRedux } from 'react-icons/si'
+import { SiReactrouter } from 'react-icons/si'
 
-type IconKeys =
-	| 'github'
-	| 'linkedin'
-	| 'download'
-	| 'react'
-	| 'javascript'
-	| 'typescript'
-	| 'html'
-	| 'css'
-	| 'tailwind'
-	| 'strapi'
-
-type IconsType<Key extends string> = {
-	[Property in Key]: React.ComponentType<React.SVGProps<SVGSVGElement>>
-}
+import type { IconKeys, IconsType } from '@types'
 
 const Icons: IconsType<IconKeys> = {
 	github: FaGithub,
@@ -35,7 +25,11 @@ const Icons: IconsType<IconKeys> = {
 	html: FaHtml5,
 	css: FaCss3Alt,
 	tailwind: SiTailwindcss,
-	strapi: SiStrapi
+	strapi: SiStrapi,
+	tanQuery: SiReactquery,
+	redux: SiRedux,
+	graphql: SiGraphql,
+	reactRouter: SiReactrouter
 }
 
 type IconProps = {

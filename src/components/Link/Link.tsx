@@ -1,7 +1,9 @@
 import type { PropsWithChildren } from 'react'
 
+import type { HrefTypes } from '@types'
+
 type LinkProps = PropsWithChildren & {
-	href: `https://${string}` | `http://${string}` | `#${string}`
+	href: HrefTypes
 	className?: string
 	target?: string
 }
