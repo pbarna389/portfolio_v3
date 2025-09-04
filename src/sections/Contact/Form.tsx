@@ -5,7 +5,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 
 import { InputFactory } from '@components'
 
-import { formInputs } from './constants'
+import { formDefaultValues, formInputs } from './constants'
 
 import type { ContactFormDataType } from './schema'
 import { ContactFormSchema } from './schema'
@@ -15,16 +15,12 @@ export const Form = () => {
 
 	const {
 		register,
+		reset,
 		handleSubmit: formSubmit,
 		formState: { errors, isValid }
 	} = useForm<ContactFormDataType>({
 		resolver: zodResolver(ContactFormSchema),
-		defaultValues: {
-			name: '',
-			details: '',
-			phone: '',
-			email: ''
-		}
+		defaultValues: formDefaultValues
 	})
 
 	const isLocked = !isValid && hasSubmitted
@@ -35,6 +31,8 @@ export const Form = () => {
 
 	const handleSubmit = formSubmit((data) => {
 		alert(`Works like a charm! Data: ${JSON.stringify(data)}`)
+
+		reset(formDefaultValues)
 	}, onError)
 
 	return (
@@ -55,7 +53,7 @@ export const Form = () => {
 				))}
 			</div>
 			<button
-				className="z-1 border-2 border-darker-500 text-[16px] text-center text-bold pt-1 pb-1 pl-4.75 pr-4.75 text-darker-500 sm:text-[20px] rounded-md w-fit cursor-pointer transition duration-500 disabled:brightness-50 disabled:cursor-not-allowed self-center"
+				className="z-1 border-2 border-darker-500 text-[16px] text-center text-bold pt-1 pb-1 pl-4.75 pr-4.75 text-darker-500 sm:text-[20px] rounded-md w-fit cursor-pointer transition duration-500 disabled:brightness-50 disabled:cursor-not-allowed self-center hover:brigtness-125 hover:scale-105 disabled:hover:scale-100"
 				type="submit"
 				disabled={isLocked}
 			>

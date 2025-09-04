@@ -42,3 +42,11 @@ export const formInputs: {
 	{ name: 'phone', type: 'tel', placeholder: 'Phone number' },
 	{ name: 'details', type: 'textarea', placeholder: 'Your message' }
 ]
+
+export const formDefaultValues = {
+	name: '',
+	title: '',
+	details: '',
+	phone: '',
+	email: ''
+}
