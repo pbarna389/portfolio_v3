@@ -1,4 +1,4 @@
-import { About, Hero, Menu, Navbar, Skills } from '@section'
+import { About, Contact, Hero, Menu, Navbar, Skills } from '@section'
 
 function App() {
 	return (
@@ -9,6 +9,7 @@ function App() {
 				<Hero />
 				<About />
 				<Skills />
+				<Contact />
 			</main>
 		</div>
 	)

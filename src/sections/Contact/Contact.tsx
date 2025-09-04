@@ -1,3 +1,10 @@
+import { Form } from './Form'
+
 export const Contact = () => {
-	return <div>Contact</div>
+	return (
+		<section>
+			<h2>Contact</h2>
+			<Form />
+		</section>
+	)
 }
