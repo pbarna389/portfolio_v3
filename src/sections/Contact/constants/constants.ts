@@ -12,7 +12,7 @@ export const contactSchemaConstants = {
 	title: {
 		minLength: 5,
 		minErrorMessage() {
-			return `The title shoudl be at least ${this.minLength} letters`
+			return `The title should be at least ${this.minLength} letters`
 		},
 		maxLength: 25,
 		maxErrorMessage() {
