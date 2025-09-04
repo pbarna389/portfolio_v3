@@ -26,3 +26,5 @@ export type ConstantWithLinks = {
 	link: Exclude<HrefTypes, `#${string}`>
 	name: IconKeys
 }
+
+export type InputTypeKeys = 'text' | 'email' | 'tel' | 'textarea'

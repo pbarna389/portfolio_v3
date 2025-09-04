@@ -1,0 +1,52 @@
+import type { InputTypeKeys } from '@types'
+
+import type { ContactFormDataType } from '../schema'
+
+export const contactSchemaConstants = {
+	name: {
+		minLength: 5,
+		minErrorMessage() {
+			return `Your given name is should be at least ${this.minLength} letters`
+		}
+	},
+	title: {
+		minLength: 5,
+		minErrorMessage() {
+			return `The title shoudl be at least ${this.minLength} letters`
+		},
+		maxLength: 25,
+		maxErrorMessage() {
+			return `Title maxLenght should not exceed ${this.maxLength} letters`
+		}
+	},
+	details: {
+		minLength: 20,
+		minErrorMessage() {
+			return `Your message should be at least ${this.minLength} letters long`
+		},
+		maxLength: 250,
+		maxErrorMessage() {
+			return `Your message should not exceed ${this.maxLength} letters`
+		}
+	}
+}
+
+export const formInputs: {
+	name: keyof ContactFormDataType
+	placeholder: string
+	type: InputTypeKeys
+}[] = [
+	{ name: 'name', type: 'text', placeholder: 'Name' },
+	{ name: 'title', type: 'text', placeholder: 'Title' },
+	{ name: 'email', type: 'email', placeholder: 'Email address' },
+	{ name: 'phone', type: 'tel', placeholder: 'Phone number' },
+	{ name: 'details', type: 'textarea', placeholder: 'Your message' }
+]
+
+export const formDefaultValues = {
+	name: '',
+	title: '',
+	details: '',
+	phone: '',
+	email: ''
+}
