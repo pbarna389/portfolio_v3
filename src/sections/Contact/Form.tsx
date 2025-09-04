@@ -1,14 +1,22 @@
+import { useState } from 'react'
+
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 
+import { InputFactory } from '@components'
+
+import { formInputs } from './constants'
+
 import type { ContactFormDataType } from './schema'
-import { ContactFormSchema } from '../About/schemas'
+import { ContactFormSchema } from './schema'
 
 export const Form = () => {
+	const [hasSubmitted, setHasSubmitted] = useState(false)
+
 	const {
 		register,
 		handleSubmit: formSubmit,
-		formState: { errors }
+		formState: { errors, isValid }
 	} = useForm<ContactFormDataType>({
 		resolver: zodResolver(ContactFormSchema),
 		defaultValues: {
@@ -19,25 +27,38 @@ export const Form = () => {
 		}
 	})
 
+	const isLocked = !isValid && hasSubmitted
+
+	const onError = () => {
+		setHasSubmitted(true)
+	}
+
 	const handleSubmit = formSubmit((data) => {
-		console.log(data)
-		console.log('Fired!')
-	})
+		alert(`Works like a charm! Data: ${JSON.stringify(data)}`)
+	}, onError)
 
 	return (
-		<form className="z-1" onSubmit={handleSubmit}>
-			Form
-			<input className="outline-1" type="text" {...register('name')} />
-			<input className="outline-1" type="text" {...register('email')} />
-			<input className="outline-1" type="text" {...register('phone')} />
-			<textarea className="outline-1" {...register('details')} />
-			<button className="z-1 cursor-pointer" type="submit">
-				Submit
+		<form
+			autoComplete="off"
+			className="flex flex-col gap-[calc(0.75rem+1px)] justify-center items-center w-full"
+			onSubmit={handleSubmit}
+		>
+			{formInputs.map(({ name, placeholder, type }) => (
+				<InputFactory<ContactFormDataType>
+					key={name}
+					inputDetails={{ name, placeholder }}
+					register={register}
+					type={type}
+					error={errors[name]}
+				/>
+			))}
+			<button
+				className="z-1 border-2 border-darker-500 text-[16px] text-center text-bold pt-1 pb-1 pl-4.75 pr-4.75 text-darker-500 sm:text-[20px] rounded-md w-fit cursor-pointer transition duration-500 disabled:brightness-50 disabled:cursor-not-allowed"
+				type="submit"
+				disabled={isLocked}
+			>
+				Send
 			</button>
-			{errors.name && <p>Some errors are here {errors.name.message}!</p>}
-			{errors.email && <p>Some errors are here {errors.email.message}!</p>}
-			{errors.phone && <p>Some errors are here {errors.phone.message}!</p>}
-			{errors.details && <p>Some errors are here {errors.details.message}!</p>}
 		</form>
 	)
 }

@@ -1,4 +1,6 @@
 export { Icon, IconCollection } from './IconCollection'
+export { InputFactory } from './InputFactory'
 export { Link } from './Link'
 export { Navigation } from './Navigation'
 export { ProfilePic } from './ProfilePic'
+export { SectionHeader } from './SectionHeader'

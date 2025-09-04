@@ -1,1 +1,1 @@
-export { contactSchemaConstants } from './constants'
+export { contactSchemaConstants, formInputs } from './constants'

@@ -1,6 +1,6 @@
 import z from 'zod'
 
-import { contactSchemaConstants } from './constants/constants'
+import { contactSchemaConstants } from './constants'
 
 const phoneRegex = /^\+?[0-9\s\-()]{7,20}$/
 
@@ -9,6 +9,14 @@ export const ContactFormSchema = z.object({
 		error: contactSchemaConstants.name.minErrorMessage()
 	}),
 	email: z.email(),
+	title: z
+		.string()
+		.min(contactSchemaConstants.title.minLength, {
+			error: contactSchemaConstants.title.minErrorMessage()
+		})
+		.max(contactSchemaConstants.title.maxLength, {
+			error: contactSchemaConstants.title.maxErrorMessage()
+		}),
 	phone: z
 		.string()
 		.min(7, 'Phone number is too short')
