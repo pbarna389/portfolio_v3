@@ -3,7 +3,9 @@ import { Link, Navigation } from '@components'
 export const Navbar = () => {
 	return (
 		<header>
-			<nav className={`sm:item grid grid-cols-3 items-center border-2 border-white`}>
+			<nav
+				className={`sm:item grid grid-cols-3 items-center mr-4 ml-4 sm:ml-6 sm:mr-6 border-2 border-white`}
+			>
 				<h2 className="justify-self-center col-start-2 col-end-3 sm:col-start-1 sm:col-end-2 sm:justify-self-start">
 					Logo
 				</h2>
