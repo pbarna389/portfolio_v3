@@ -8,7 +8,7 @@ export const Navbar = () => {
 			</h2>
 			<Navigation desktopMode={true} />
 			<Link
-				href="http://localhost:5173"
+				href="#contact"
 				className="bg-highlight pt-[calc(0.5rem-2px)] pr-[calc(1rem-4px)]	pb-[calc(0.5rem-2px)] pl-[calc(1rem-4px)] justify-self-start text-center	text-[14px]	sm:col-start-3 sm:col-end-4 sm:justify-self-end sm:text-sm rounded-sm"
 			>
 				Hire me

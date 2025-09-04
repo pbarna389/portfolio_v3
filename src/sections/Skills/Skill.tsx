@@ -21,7 +21,7 @@ export const Skill = ({ name, progress, children }: SkillsProps) => {
 		return () => clearTimeout(timeout)
 	}, [statusToShow, progress])
 
-	const radius = 50
+	const radius = 60
 	const circumference = 2 * Math.PI * radius
 	const offset = circumference - (statusToShow / 100) * circumference
 
