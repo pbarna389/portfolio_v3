@@ -10,10 +10,10 @@ type InputProps<T extends FieldValues> = {
 }
 
 const inputClassNames =
-	'pt-3 pb-3 pl-4 pr-4 bg-[#FFF]/4 focus:bg-[#FFF]/4 focus:scale-105 focus:brightness-125 focus:border-1 focus:border-darker-500 focus:text-md active:bg-[#FFF]/4 focus:outline-none rounded-sm text-sm w-full transition  duration-300 xl:focus:scale-101'
+	'pt-3 pb-3 pl-4 pr-4 bg-[#FFF]/4 focus:bg-[#FFF]/4 focus:scale-105 focus:brightness-150 focus:border-1 focus:border-darker-500 focus:text-md active:bg-[#FFF]/4 focus:outline-none rounded-sm text-sm w-full transition  duration-300 xl:focus:scale-101'
 
 const errorClassNames =
-	'absolute -top-5 -left-0.5 text-red-800 text-sm text-start self-start text-[16px] sm:text-[12px]'
+	'absolute -top-5 -left-0.5 text-red-800 text-sm text-start self-start text-[16px] sm:text-[12px] -bold'
 
 export const InputFactory = <T extends FieldValues>({
 	type,
@@ -26,7 +26,7 @@ export const InputFactory = <T extends FieldValues>({
 			return (
 				<div className="w-full relative">
 					<input
-						className={`${inputClassNames} ${error?.message && 'outline-1 outline-red-800 focus:border-4 focus:border-red-900'}`}
+						className={`${inputClassNames} ${error?.message && 'outline-1 outline-red-800 focus:border-4 focus:border-red-900'} `}
 						type={type}
 						placeholder={inputDetails.placeholder}
 						{...register(inputDetails.name)}

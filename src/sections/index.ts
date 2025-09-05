@@ -1,5 +1,6 @@
 export { About } from './About'
 export { Contact } from './Contact'
+export { Footer } from './Footer'
 export { Hero } from './Hero'
 export { Menu } from './Menu'
 export { Navbar } from './Navbar'

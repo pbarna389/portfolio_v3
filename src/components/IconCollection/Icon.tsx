@@ -1,3 +1,5 @@
+import { BsTelephone } from 'react-icons/bs'
+import { CiMail } from 'react-icons/ci'
 import { FaLinkedinIn } from 'react-icons/fa'
 import { FaReact } from 'react-icons/fa'
 import { FaHtml5 } from 'react-icons/fa'
@@ -31,7 +33,9 @@ const Icons: IconsType<IconKeys> = {
 	reduxToolkit: SiRedux,
 	graphql: SiGraphql,
 	reactRouter: SiReactrouter,
-	nextjs: RiNextjsFill
+	nextjs: RiNextjsFill,
+	mail: CiMail,
+	telephone: BsTelephone
 }
 
 type IconProps = {

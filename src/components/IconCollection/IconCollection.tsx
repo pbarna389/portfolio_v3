@@ -63,7 +63,7 @@ export const IconCollection = ({
 	}
 
 	return (
-		<div className="flex flex-row gap-2 mb-8 justify-center items-center w-full sm:justify-start sm:items-start">
+		<div className={className}>
 			<IconContext value={value}>
 				{arrayToCreateFrom.map((el) => {
 					return (

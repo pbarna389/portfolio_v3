@@ -17,25 +17,41 @@ export const Navigation = ({
 				`}
 		>
 			<ul
-				className={`flex flex-col gap-4 h-screen w-screen items-center justify-center	sm:flex-row sm:max-h-fit sm:max-w-fit `}
+				className={`flex flex-col gap-4 h-screen w-screen items-center justify-center	sm:flex-row sm:max-h-fit sm:max-w-fit text-darker-500`}
 			>
 				<li onClick={setState}>
-					<Link href="#about" target="" className="cursor-pointer">
+					<Link
+						href="#about"
+						target=""
+						className="cursor-pointer hover:text-darker-300 transition duration-300"
+					>
 						About Me
 					</Link>
 				</li>
 				<li onClick={setState}>
-					<Link href="#skills" target="" className="cursor-pointer">
+					<Link
+						href="#skills"
+						target=""
+						className="cursor-pointer hover:text-darker-300 transition duration-300"
+					>
 						Skills
 					</Link>
 				</li>
 				<li onClick={setState}>
-					<Link href="#projects" target="" className="cursor-pointer">
+					<Link
+						href="#projects"
+						target=""
+						className="cursor-pointer hover:text-darker-300 transition duration-300"
+					>
 						Portfolio
 					</Link>
 				</li>
 				<li onClick={setState}>
-					<Link href="#contact" target="" className="cursor-pointer">
+					<Link
+						href="#contact"
+						target=""
+						className="cursor-pointer hover:text-darker-300 transition duration-300"
+					>
 						Contact
 					</Link>
 				</li>
