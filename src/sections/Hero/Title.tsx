@@ -1,6 +1,5 @@
 import { IconCollection, Link } from '@components'
-
-import { PROFILE_LINKS } from './constants'
+import { PROFILE_LINKS } from '@constants'
 
 import { Background } from './Background'
 
@@ -20,7 +19,7 @@ export const Title = () => {
 			<IconCollection
 				size={20}
 				arrayToCreateFrom={PROFILE_LINKS}
-				className="flex flex-row gap-2 mb-8 justify-center items-center sm:justify-start sm:items-start"
+				className="flex flex-row gap-2 mb-8 justify-center items-center sm:justify-start sm:items-start *:rounded-full"
 			/>
 			<div className="flex flex-row flex-wrap item-center justify-center gap-2 mt-2 mb-4">
 				<Link

@@ -14,6 +14,8 @@ export type IconKeys =
 	| 'graphql'
 	| 'reactRouter'
 	| 'nextjs'
+	| 'mail'
+	| 'telephone'
 
 export type IconsType<Key extends string> = {
 	[Property in Key]: React.ComponentType<React.SVGProps<SVGSVGElement>>
