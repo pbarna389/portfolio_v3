@@ -1,10 +1,20 @@
 import { useEffect, useRef, useState } from 'react'
 
-export const useIntersectionObserver = () => {
+type UseIntersectionOptions = {
+	shouldFreeze?: boolean
+}
+
+export const useIntersectionObserver = ({
+	shouldFreeze = false
+}: UseIntersectionOptions = {}) => {
 	const [inView, setInView] = useState<boolean>(false)
+
 	const ref: React.RefObject<HTMLElement | null> = useRef(null)
 
+	const frozen = shouldFreeze && inView
 	useEffect(() => {
+		if (!ref || !('IntersectionObserver' in window)) return
+
 		const observerCb = (entries: IntersectionObserverEntry[]) => {
 			const [{ isIntersecting }] = entries
 
@@ -18,6 +28,14 @@ export const useIntersectionObserver = () => {
 		if (current) {
 			observer.observe(current)
 		}
+
+		if (frozen && current) {
+			observer.unobserve(current)
+
+			return
+		}
+
+		return () => observer.disconnect()
 	})
 
 	return { ref, inView }
