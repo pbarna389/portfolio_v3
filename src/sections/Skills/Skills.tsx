@@ -19,6 +19,7 @@ export const Skills = () => {
 				arrayToCreateFrom={DEMONSTRATABLE_SKILLS}
 				size={50}
 				component={Skill}
+				inView={inView}
 				className="grid grid-cols-2 xs:grid-cols-3 sm:grid-cols-6 gap-4 w-full"
 			/>
 		</section>

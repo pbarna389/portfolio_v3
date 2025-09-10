@@ -52,7 +52,7 @@ export const Navigation = ({
 						target=""
 						className="cursor-pointer hover:text-darker-300 transition duration-300"
 					>
-						Contact
+						Contact Me
 					</Link>
 				</li>
 			</ul>
