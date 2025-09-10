@@ -16,6 +16,7 @@ export type IconKeys =
 	| 'nextjs'
 	| 'mail'
 	| 'telephone'
+	| 'arrowUp'
 
 export type IconsType<Key extends string> = {
 	[Property in Key]: React.ComponentType<React.SVGProps<SVGSVGElement>>

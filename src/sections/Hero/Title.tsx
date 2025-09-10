@@ -23,15 +23,15 @@ export const Title = () => {
 			/>
 			<div className="flex flex-row flex-wrap item-center justify-center gap-2 mt-2 mb-4">
 				<Link
-					href="http://localhost:5173"
-					className="bg-highlight text-[16px] text-center pt-1 pb-1 pl-6 pr-6 sm:text-[20px]"
+					href="#contact"
+					className="bg-highlight text-[16px] text-center rounded-md pt-1 pb-1 pl-6 pr-6 sm:text-[20px]"
 				>
 					Hire me
 				</Link>
 				<Link href="http://localhost:5173" />
 				<Link
 					href="http://localhost:5173"
-					className="border-2 border-darker-500 text-[16px] text-center pt-1 pb-1 pl-6 pr-6 text-darker-500 sm:text-[20px]"
+					className="border-2 border-darker-500 text-[16px] text-center rounded-md pt-1 pb-1 pl-6 pr-6 text-darker-500 sm:text-[20px]"
 				>
 					Download CV
 				</Link>

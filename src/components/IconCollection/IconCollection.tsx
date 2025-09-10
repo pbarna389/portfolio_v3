@@ -20,9 +20,9 @@ type IconCollectionProps = {
 		progress?: number
 	}[]
 	className: string
-	inView: boolean
 	size: number
 	component?: React.ComponentType<SkillsProps>
+	inView?: boolean
 }
 
 export const IconCollection = ({

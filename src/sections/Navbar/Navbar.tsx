@@ -2,7 +2,7 @@ import { Link, Navigation } from '@components'
 
 export const Navbar = () => {
 	return (
-		<header>
+		<header id="header">
 			<nav
 				className={`sm:item grid grid-cols-3 items-center mr-4 ml-4 sm:ml-6 sm:mr-6 border-2 border-white`}
 			>
@@ -12,6 +12,7 @@ export const Navbar = () => {
 				<Navigation desktopMode={true} />
 				<Link
 					href="#contact"
+					target=""
 					className="bg-highlight pt-[calc(0.5rem-2px)] pr-[calc(1rem-4px)]	pb-[calc(0.5rem-2px)] pl-[calc(1rem-4px)] justify-self-start text-center	text-[14px]	sm:col-start-3 sm:col-end-4 sm:justify-self-end sm:text-sm rounded-sm"
 				>
 					Hire me
