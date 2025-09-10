@@ -1,25 +1,26 @@
 import { useEffect, useState } from 'react'
 
 export type SkillsProps = React.PropsWithChildren & {
+	inViewDesktop: boolean
 	name: string
 	progress: number
 	highlightColor?: string
 }
 
-export const Skill = ({ name, progress, children }: SkillsProps) => {
+export const Skill = ({ name, progress, inViewDesktop, children }: SkillsProps) => {
 	const [statusToShow, setStatusToShow] = useState<number>(0)
 
 	useEffect(() => {
 		let timeout: NodeJS.Timeout
 
-		if (statusToShow < progress) {
+		if (inViewDesktop && statusToShow < progress) {
 			timeout = setTimeout(() => {
 				setStatusToShow((prev) => prev + 1)
 			}, 25)
 		}
 
 		return () => clearTimeout(timeout)
-	}, [statusToShow, progress])
+	}, [statusToShow, progress, inViewDesktop])
 
 	const radius = 60
 	const circumference = 2 * Math.PI * radius

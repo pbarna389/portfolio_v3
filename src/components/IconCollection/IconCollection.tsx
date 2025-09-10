@@ -20,6 +20,7 @@ type IconCollectionProps = {
 		progress?: number
 	}[]
 	className: string
+	inView: boolean
 	size: number
 	component?: React.ComponentType<SkillsProps>
 }
@@ -28,6 +29,7 @@ export const IconCollection = ({
 	size,
 	arrayToCreateFrom,
 	component,
+	inView = false,
 	className
 }: IconCollectionProps) => {
 	const value = useMemo(() => {
@@ -45,6 +47,7 @@ export const IconCollection = ({
 							<Wrapper
 								key={`icon-${el.name}`}
 								name={textConverter(el.name)}
+								inViewDesktop={inView}
 								progress={el.progress ? el.progress : 0}
 								highlightColor={el.highlightColor}
 							>
