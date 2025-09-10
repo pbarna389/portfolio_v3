@@ -4,6 +4,7 @@ import { FaLinkedinIn } from 'react-icons/fa'
 import { FaReact } from 'react-icons/fa'
 import { FaHtml5 } from 'react-icons/fa'
 import { FaCss3Alt } from 'react-icons/fa'
+import { FaArrowUp } from 'react-icons/fa'
 import { FaGithub } from 'react-icons/fa6'
 import { FaDownload } from 'react-icons/fa6'
 import { RiNextjsFill } from 'react-icons/ri'
@@ -35,7 +36,8 @@ const Icons: IconsType<IconKeys> = {
 	reactRouter: SiReactrouter,
 	nextjs: RiNextjsFill,
 	mail: CiMail,
-	telephone: BsTelephone
+	telephone: BsTelephone,
+	arrowUp: FaArrowUp
 }
 
 type IconProps = {
