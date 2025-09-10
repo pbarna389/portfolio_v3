@@ -20,6 +20,7 @@ export const Link = ({
 			`}
 			target={target}
 			href={href}
+			aria-label={`Link to: ${href}`}
 		>
 			{children}
 		</a>
