@@ -1,0 +1,1 @@
+export { useTextContext } from './useTextContext'

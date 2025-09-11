@@ -1,27 +1,25 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 
 import { db } from '@config'
 import { About, Contact, Footer, Hero, Menu, Navbar, NavToTopBtn, Skills } from '@section'
-import { collection, type DocumentData, getDocs } from 'firebase/firestore/lite'
+import { collection, getDocs } from 'firebase/firestore/lite'
+
+import { useTextContext } from '@context'
 
 function App() {
-	const [textData, setTextData] = useState<DocumentData[]>()
+	const { dispatch } = useTextContext()
 
 	useEffect(() => {
 		const getData = async () => {
 			const textRef = collection(db, 'textData')
-			const data = await getDocs(textRef)
-			const filteredData = data.docs.map((doc) => doc.data())
+			const textData = await getDocs(textRef)
+			const filteredData = textData.docs.map((doc) => doc.data())
 
-			setTextData(filteredData)
+			dispatch(filteredData)
 		}
 
 		getData()
-	}, [])
-
-	useEffect(() => {
-		console.log(textData)
-	}, [textData])
+	}, [dispatch])
 
 	return (
 		<div className="flex flex-col gap-12 sm:gap-20">
