@@ -1,14 +1,15 @@
-import type { ConstantWithLinks } from '@types'
-
-export const PROFILE_LINKS: ConstantWithLinks[] = [
-	{
-		name: 'github',
-		link: 'https://github.com/pbarna389',
-		highlightColor: 'gray'
+export const TEXT_STATE_BASEVALUE = {
+	navLinks: [],
+	aboutMe: {
+		heading: '',
+		text: ''
 	},
-	{
-		name: 'linkedin',
-		link: 'https://www.linkedin.com/in/barnapapp-fe',
-		highlightColor: 'blue'
-	}
-]
+	hero: {
+		header1: '',
+		header2: '',
+		header3: ''
+	},
+	profileLinks: [],
+	contacts: [],
+	skills: []
+}

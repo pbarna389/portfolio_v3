@@ -5,6 +5,7 @@ import { FaReact } from 'react-icons/fa'
 import { FaHtml5 } from 'react-icons/fa'
 import { FaCss3Alt } from 'react-icons/fa'
 import { FaArrowUp } from 'react-icons/fa'
+import { FaQuestionCircle } from 'react-icons/fa'
 import { FaGithub } from 'react-icons/fa6'
 import { FaDownload } from 'react-icons/fa6'
 import { RiNextjsFill } from 'react-icons/ri'
@@ -37,7 +38,8 @@ const Icons: IconsType<IconKeys> = {
 	nextjs: RiNextjsFill,
 	mail: CiMail,
 	telephone: BsTelephone,
-	arrowUp: FaArrowUp
+	arrowUp: FaArrowUp,
+	default: FaQuestionCircle
 }
 
 type IconProps = {
@@ -45,7 +47,7 @@ type IconProps = {
 } & React.SVGProps<SVGSVGElement>
 
 export const Icon = ({ name, ...props }: IconProps) => {
-	const Component = Icons[name]
+	const Component = Icons[name] ? Icons[name] : Icons.default
 
 	return <Component {...props} fill="currentColor" />
 }

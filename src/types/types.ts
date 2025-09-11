@@ -17,12 +17,18 @@ export type IconKeys =
 	| 'mail'
 	| 'telephone'
 	| 'arrowUp'
+	| 'default'
 
 export type IconsType<Key extends string> = {
 	[Property in Key]: React.ComponentType<React.SVGProps<SVGSVGElement>>
 }
 
-export type HrefTypes = `https://${string}` | `http://${string}` | `#${string}`
+export type HrefTypes =
+	| `https://${string}`
+	| `http://${string}`
+	| `#${string}`
+	| `mailto:${string}`
+	| `tel:${string}`
 
 export type ConstantWithLinks = {
 	highlightColor: string
@@ -31,3 +37,7 @@ export type ConstantWithLinks = {
 }
 
 export type InputTypeKeys = 'text' | 'email' | 'tel' | 'textarea'
+
+export type TextDataType = {
+	navLinks: string[]
+}

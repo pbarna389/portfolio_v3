@@ -1,7 +1,9 @@
+export type { FiresbaseDataType } from './models'
 export type {
 	ConstantWithLinks,
 	HrefTypes,
 	IconKeys,
 	IconsType,
-	InputTypeKeys
+	InputTypeKeys,
+	TextDataType
 } from './types'

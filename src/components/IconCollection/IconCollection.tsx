@@ -13,7 +13,7 @@ import { HIGHLIGHT_CLASSES, HOVER_HIGHLIGHT } from './constants'
 import { Icon } from './Icon'
 
 type IconCollectionProps = {
-	arrayToCreateFrom: {
+	arraySource: {
 		link: Exclude<HrefTypes, `#${string}`>
 		name: IconKeys
 		highlightColor?: string
@@ -27,7 +27,7 @@ type IconCollectionProps = {
 
 export const IconCollection = ({
 	size,
-	arrayToCreateFrom,
+	arraySource,
 	component,
 	inView = false,
 	className
@@ -42,7 +42,7 @@ export const IconCollection = ({
 		return (
 			<div className={className}>
 				<IconContext value={value}>
-					{arrayToCreateFrom.map((el) => {
+					{arraySource.map((el) => {
 						return (
 							<Wrapper
 								key={`icon-${el.name}`}
@@ -68,7 +68,7 @@ export const IconCollection = ({
 	return (
 		<div className={className}>
 			<IconContext value={value}>
-				{arrayToCreateFrom.map((el) => {
+				{arraySource.map((el) => {
 					return (
 						<Link
 							key={`icon-${el.name}`}

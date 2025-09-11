@@ -12,6 +12,7 @@ export const ProfilePic = ({ className = '' }: ProfilePicProps) => {
 			<img
 				className="w-6/7 sm:relative sm:w-[max(80vw,650px)] md:w-6/7 xl:w-[550px] sm:grayscale-100 sm:hover:grayscale-0 transition ease-in-out duration-700"
 				src={img}
+				alt="picture about me"
 			/>
 		</div>
 	)
