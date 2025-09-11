@@ -1,37 +1,12 @@
-import { useEffect } from 'react'
-
-import { db } from '@config'
 import { About, Contact, Footer, Hero, Menu, Navbar, NavToTopBtn, Skills } from '@section'
-import { useLoaderContext } from 'context/textContext'
-import { collection, getDocs } from 'firebase/firestore/lite'
 
-import { useTextContext } from '@context'
-import { TEXT_STATE_BASEVALUE } from '@constants'
-import type { FiresbaseDataType } from '@types'
+import { useLoaderContext } from '@context'
+import { useDatabase } from '@hooks'
 
 function App() {
-	const { setTextData } = useTextContext()
-	const { loading, setLoading } = useLoaderContext()
+	const { loading } = useLoaderContext()
 
-	useEffect(() => {
-		const getData = async () => {
-			const textRef = collection(db, 'textData')
-			const textData = await getDocs(textRef)
-			const filteredData = textData.docs.map((doc) => doc.data())
-
-			const dataObj = filteredData.reduce<FiresbaseDataType>((obj, curr) => {
-				Object.entries(curr).forEach(([key, value]) => {
-					obj[key] = Array.isArray(value) ? value.flat() : value
-				})
-				return obj
-			}, TEXT_STATE_BASEVALUE)
-
-			setTextData(dataObj)
-			setLoading(false)
-		}
-
-		getData()
-	}, [setTextData, setLoading])
+	useDatabase()
 
 	if (loading) {
 		return <div>Loading...</div>

@@ -1,0 +1,1 @@
+export { getTextData } from './utils'
