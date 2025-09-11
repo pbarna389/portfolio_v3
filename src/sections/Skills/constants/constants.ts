@@ -1,7 +1,6 @@
 import type { ConstantWithLinks } from '@types'
 
 export const DEMONSTRATABLE_SKILLS: (ConstantWithLinks & {
-	highlightColor: string
 	progress: number
 })[] = [
 	{

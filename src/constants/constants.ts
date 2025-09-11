@@ -18,5 +18,10 @@ export const TEXT_STATE_BASEVALUE = {
 	aboutMe: {
 		heading: '',
 		text: ''
+	},
+	hero: {
+		header1: '',
+		header2: '',
+		header3: ''
 	}
 }
