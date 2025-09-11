@@ -3,11 +3,14 @@ import { use } from 'react'
 import { TextContext } from '../textContext'
 
 export const useTextContext = () => {
-	const { data, dispatch } = use(TextContext)
+	const { textData, setTextData } = use(TextContext)
 
-	if (!data || !dispatch) {
-		throw new Error('useTextContext used outside of TextContextProvider')
+	if (!textData) {
+		throw new Error('textData used outside of TextContextProvider')
+	}
+	if (!setTextData) {
+		throw new Error('setTextData used outside of TextContextProvider')
 	}
 
-	return { data, dispatch }
+	return { textData, setTextData }
 }

@@ -31,3 +31,7 @@ export type ConstantWithLinks = {
 }
 
 export type InputTypeKeys = 'text' | 'email' | 'tel' | 'textarea'
+
+export type TextDataType = {
+	navLinks: string[]
+}

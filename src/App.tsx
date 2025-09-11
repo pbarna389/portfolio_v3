@@ -2,12 +2,15 @@ import { useEffect } from 'react'
 
 import { db } from '@config'
 import { About, Contact, Footer, Hero, Menu, Navbar, NavToTopBtn, Skills } from '@section'
+import { useLoaderContext } from 'context/textContext'
 import { collection, getDocs } from 'firebase/firestore/lite'
 
 import { useTextContext } from '@context'
+import type { TextDataType } from '@types'
 
 function App() {
-	const { dispatch } = useTextContext()
+	const { setTextData } = useTextContext()
+	const { loading, setLoading } = useLoaderContext()
 
 	useEffect(() => {
 		const getData = async () => {
@@ -15,11 +18,27 @@ function App() {
 			const textData = await getDocs(textRef)
 			const filteredData = textData.docs.map((doc) => doc.data())
 
-			dispatch(filteredData)
+			const dataObj = filteredData.reduce((obj, curr) => {
+				const newKey = Object.keys(curr)[0]
+				const newValue = Object.values(curr)
+
+				obj[newKey] = newValue.flat()
+
+				return obj
+			}, {})
+
+			console.log(dataObj)
+
+			setTextData(dataObj as TextDataType)
+			setLoading(false)
 		}
 
 		getData()
-	}, [dispatch])
+	}, [setTextData, setLoading])
+
+	if (loading) {
+		return <div>Loading...</div>
+	}
 
 	return (
 		<div className="flex flex-col gap-12 sm:gap-20">

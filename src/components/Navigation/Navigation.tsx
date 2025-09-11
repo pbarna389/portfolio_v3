@@ -1,5 +1,4 @@
 import { useTextContext } from '@context'
-import { Link } from '@components'
 
 import NavigationLink from './NavigationLink'
 
@@ -14,7 +13,9 @@ export const Navigation = ({
 	desktopMode = false,
 	setState
 }: NavigationProps) => {
-	const { data } = useTextContext()
+	const {
+		textData: { navLinks }
+	} = useTextContext()
 
 	return (
 		<div
@@ -24,36 +25,10 @@ export const Navigation = ({
 			<ul
 				className={`flex flex-col gap-4 h-screen w-screen items-center justify-center	sm:flex-row sm:max-h-fit sm:max-w-fit text-darker-500`}
 			>
-				{data[0]?.navLinks[0] && (
-					<NavigationLink setState={setState} text={data[0]?.navLinks[0]} />
-				)}
-				<li onClick={setState}>
-					<Link
-						href="#skills"
-						target=""
-						className="cursor-pointer hover:text-darker-300 transition duration-300"
-					>
-						Skills
-					</Link>
-				</li>
-				<li onClick={setState}>
-					<Link
-						href="#projects"
-						target=""
-						className="cursor-pointer hover:text-darker-300 transition duration-300"
-					>
-						Portfolio
-					</Link>
-				</li>
-				<li onClick={setState}>
-					<Link
-						href="#contact"
-						target=""
-						className="cursor-pointer hover:text-darker-300 transition duration-300"
-					>
-						Contact
-					</Link>
-				</li>
+				{navLinks.length &&
+					navLinks.map((el) => (
+						<NavigationLink key={`navigation-${el}`} setState={setState} text={el} />
+					))}
 			</ul>
 		</div>
 	)

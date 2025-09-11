@@ -1,13 +1,13 @@
 import type { Dispatch, SetStateAction } from 'react'
 import { createContext } from 'react'
 
-import type { DocumentData } from 'firebase/firestore/lite'
+import type { TextDataType } from '@types'
 
-type TextContextValues = {
-	data?: DocumentData[]
-	dispatch?: Dispatch<SetStateAction<DocumentData[]>>
+export type TextContextValues = {
+	setTextData?: Dispatch<SetStateAction<TextDataType>>
+	textData?: TextDataType
 }
 
 const initialTextValue: TextContextValues = {}
 
-export const TextContext = createContext<TextContextValues>(initialTextValue)
+export const TextContext = createContext<typeof initialTextValue>(initialTextValue)

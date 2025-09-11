@@ -3,5 +3,6 @@ export type {
 	HrefTypes,
 	IconKeys,
 	IconsType,
-	InputTypeKeys
+	InputTypeKeys,
+	TextDataType
 } from './types'
