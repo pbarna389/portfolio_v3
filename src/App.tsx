@@ -26,8 +26,6 @@ function App() {
 				return obj
 			}, TEXT_STATE_BASEVALUE)
 
-			console.log(dataObj)
-
 			setTextData(dataObj)
 			setLoading(false)
 		}

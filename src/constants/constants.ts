@@ -23,5 +23,8 @@ export const TEXT_STATE_BASEVALUE = {
 		header1: '',
 		header2: '',
 		header3: ''
-	}
+	},
+	profileLinks: [],
+	contacts: [],
+	skills: []
 }

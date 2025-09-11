@@ -1,3 +1,5 @@
+import type { ConstantWithLinks, IconKeys } from '@types'
+
 type AboutMeModelType = {
 	heading: string
 	text: string
@@ -9,9 +11,29 @@ type HeroModelType = {
 	header3: string
 }
 
+type SkillsModelType = (ConstantWithLinks & {
+	progress: number
+})[]
+
+type ContactsType = {
+	hrefPrefix: 'tel:' | 'mailto:'
+	name: IconKeys
+	text: string
+}
+
 export type FiresbaseDataType = {
 	aboutMe: AboutMeModelType
+	contacts: ContactsType[]
 	hero: HeroModelType
 	navLinks: string[]
-	[key: string]: string[] | AboutMeModelType | undefined | HeroModelType
+	profileLinks: ConstantWithLinks[]
+	skills: SkillsModelType
+	[key: string]:
+		| string[]
+		| AboutMeModelType
+		| undefined
+		| HeroModelType
+		| SkillsModelType
+		| ConstantWithLinks[]
+		| ContactsType[]
 }

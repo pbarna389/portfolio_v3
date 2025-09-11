@@ -1,12 +1,15 @@
+import { useTextContext } from '@context'
 import { IconCollection } from '@components'
 import { useIntersectionObserver } from '@hooks'
-
-import { DEMONSTRATABLE_SKILLS } from './constants'
 
 import { Skill } from './Skill'
 
 export const Skills = () => {
 	const { ref, inView } = useIntersectionObserver({ shouldFreeze: true })
+
+	const {
+		textData: { skills }
+	} = useTextContext()
 
 	return (
 		<section
@@ -16,7 +19,7 @@ export const Skills = () => {
 		>
 			<h1 className="text-lg font-bold text-white lg:text-4xl">Skills</h1>
 			<IconCollection
-				arrayToCreateFrom={DEMONSTRATABLE_SKILLS}
+				arraySource={skills}
 				size={50}
 				component={Skill}
 				inView={inView}

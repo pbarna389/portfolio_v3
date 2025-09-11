@@ -1,17 +1,21 @@
+import { useTextContext } from '@context'
 import { IconCollection, Link } from '@components'
-import { PROFILE_LINKS } from '@constants'
 
 import { Background } from './Background'
 import { TitleHeader } from './TitleHeader'
 
 export const Title = () => {
+	const {
+		textData: { profileLinks }
+	} = useTextContext()
+
 	return (
 		<div className="basis-1/2 flex flex-col relative gap-1 justify-center items-center sm:items-start border-2 border-white p-4">
 			<Background />
 			<TitleHeader />
 			<IconCollection
 				size={20}
-				arrayToCreateFrom={PROFILE_LINKS}
+				arraySource={profileLinks}
 				className="flex flex-row gap-2 mb-8 justify-center items-center sm:justify-start sm:items-start *:rounded-full"
 			/>
 			<div className="flex flex-row flex-wrap item-center justify-center gap-2 mt-2 mb-4">
