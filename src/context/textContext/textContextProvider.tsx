@@ -1,12 +1,13 @@
 import { useMemo, useState } from 'react'
 
-import type { TextDataType } from '@types'
+import { TEXT_STATE_BASEVALUE } from '@constants'
+import type { FiresbaseDataType } from '@types'
 
 import { LoaderContext } from './loaderContext'
 import { TextContext } from './textContext'
 
 export const TextContextProvider = ({ children }: React.PropsWithChildren) => {
-	const [textData, setTextData] = useState<TextDataType>({ navLinks: [] })
+	const [textData, setTextData] = useState<FiresbaseDataType>(TEXT_STATE_BASEVALUE)
 	const [loading, setLoading] = useState<boolean>(true)
 
 	const textContextValue = useMemo(() => {

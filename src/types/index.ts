@@ -1,3 +1,4 @@
+export type { FiresbaseDataType } from './models'
 export type {
 	ConstantWithLinks,
 	HrefTypes,

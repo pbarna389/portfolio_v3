@@ -1,11 +1,11 @@
 import type { Dispatch, SetStateAction } from 'react'
 import { createContext } from 'react'
 
-import type { TextDataType } from '@types'
+import type { FiresbaseDataType } from '@types'
 
 export type TextContextValues = {
-	setTextData?: Dispatch<SetStateAction<TextDataType>>
-	textData?: TextDataType
+	setTextData?: Dispatch<SetStateAction<FiresbaseDataType>>
+	textData?: FiresbaseDataType
 }
 
 const initialTextValue: TextContextValues = {}

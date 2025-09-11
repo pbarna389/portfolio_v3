@@ -1,1 +1,1 @@
-export { PROFILE_LINKS } from './constants'
+export { PROFILE_LINKS, TEXT_STATE_BASEVALUE } from './constants'

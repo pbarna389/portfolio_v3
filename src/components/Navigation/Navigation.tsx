@@ -25,7 +25,7 @@ export const Navigation = ({
 			<ul
 				className={`flex flex-col gap-4 h-screen w-screen items-center justify-center	sm:flex-row sm:max-h-fit sm:max-w-fit text-darker-500`}
 			>
-				{navLinks.length &&
+				{navLinks?.length &&
 					navLinks.map((el) => (
 						<NavigationLink key={`navigation-${el}`} setState={setState} text={el} />
 					))}

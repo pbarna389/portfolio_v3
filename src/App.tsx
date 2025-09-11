@@ -6,7 +6,8 @@ import { useLoaderContext } from 'context/textContext'
 import { collection, getDocs } from 'firebase/firestore/lite'
 
 import { useTextContext } from '@context'
-import type { TextDataType } from '@types'
+import { TEXT_STATE_BASEVALUE } from '@constants'
+import type { FiresbaseDataType } from '@types'
 
 function App() {
 	const { setTextData } = useTextContext()
@@ -18,18 +19,16 @@ function App() {
 			const textData = await getDocs(textRef)
 			const filteredData = textData.docs.map((doc) => doc.data())
 
-			const dataObj = filteredData.reduce((obj, curr) => {
-				const newKey = Object.keys(curr)[0]
-				const newValue = Object.values(curr)
-
-				obj[newKey] = newValue.flat()
-
+			const dataObj = filteredData.reduce<FiresbaseDataType>((obj, curr) => {
+				Object.entries(curr).forEach(([key, value]) => {
+					obj[key] = Array.isArray(value) ? value.flat() : value
+				})
 				return obj
-			}, {})
+			}, TEXT_STATE_BASEVALUE)
 
 			console.log(dataObj)
 
-			setTextData(dataObj as TextDataType)
+			setTextData(dataObj)
 			setLoading(false)
 		}
 

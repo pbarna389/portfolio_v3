@@ -12,3 +12,11 @@ export const PROFILE_LINKS: ConstantWithLinks[] = [
 		highlightColor: 'blue'
 	}
 ]
+
+export const TEXT_STATE_BASEVALUE = {
+	navLinks: [],
+	aboutMe: {
+		heading: '',
+		text: ''
+	}
+}
