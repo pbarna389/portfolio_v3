@@ -1,6 +1,7 @@
 import { About, Contact, Footer, Hero, Menu, Navbar, NavToTopBtn, Skills } from '@section'
 
 import { useLoaderContext } from '@context'
+import { Loader } from '@components'
 import { useDatabase } from '@hooks'
 
 function App() {
@@ -9,7 +10,7 @@ function App() {
 	useDatabase()
 
 	if (loading) {
-		return <div>Loading...</div>
+		return <Loader />
 	}
 
 	return (
