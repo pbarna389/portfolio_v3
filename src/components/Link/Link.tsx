@@ -6,12 +6,14 @@ type LinkProps = PropsWithChildren & {
 	href: HrefTypes
 	className?: string
 	target?: string
+	onClick?: (() => void) | undefined
 }
 
 export const Link = ({
 	href,
 	target = '_blank',
 	className = '',
+	onClick,
 	children
 }: LinkProps) => {
 	return (
@@ -21,6 +23,7 @@ export const Link = ({
 			target={target}
 			href={href}
 			aria-label={`Link to: ${href}`}
+			onClick={onClick && onClick}
 		>
 			{children}
 		</a>

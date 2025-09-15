@@ -10,11 +10,12 @@ const NavigationLink = ({ setState, text }: NavigationLinkProps) => {
 	const refLink: HrefTypes = `#${text.split(' ')[0]}`
 
 	return (
-		<li onClick={setState}>
+		<li className="w-fit" onClick={setState}>
 			<Link
 				href={refLink}
 				target=""
 				className="cursor-pointer hover:text-darker-300 transition duration-300 capitalize"
+				onClick={setState}
 			>
 				{text}
 			</Link>
