@@ -17,6 +17,8 @@
 	--font-base: 'Lato', sans-serif;
 
 	--breakpoint-xs: 25rem;
+
+	--animate-fullRotate: fullRotation 1s linear infinite;
 }
 
 @layer base {

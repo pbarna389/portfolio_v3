@@ -16,7 +16,10 @@ export const useDatabase = () => {
 			setTextData(data)
 			setLoading(false)
 		}
+		const timeout = setTimeout(() => {
+			getData()
+		}, 1000)
 
-		getData()
+		return () => clearTimeout(timeout)
 	}, [setTextData, setLoading])
 }
