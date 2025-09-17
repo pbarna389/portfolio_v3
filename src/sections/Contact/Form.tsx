@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -6,6 +6,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import emailjs from '@emailjs/browser'
 
 import { Button, InputFactory } from '@components'
+import { useLocalStorage } from '@hooks'
 
 import { formDefaultValues, formInputs } from './constants'
 
@@ -16,6 +17,8 @@ export const Form = () => {
 	const [hasSubmitted, setHasSubmitted] = useState(false)
 	const [isSending, setIsSending] = useState(false)
 	const [statusMessage, setStatusMessage] = useState<string | null>(null)
+	const [submitTimer, setSubmitTimer] = useState<number>()
+	const [finishLine, { setItem, removeItem }] = useLocalStorage<number>('submitTimer')
 
 	const {
 		register,
@@ -27,7 +30,27 @@ export const Form = () => {
 		defaultValues: formDefaultValues
 	})
 
-	const isLocked = (!isValid && hasSubmitted) || isSending
+	const isLocked =
+		(!isValid && hasSubmitted) ||
+		isSending ||
+		(finishLine && submitTimer && (finishLine - submitTimer) / 1000 > 0)
+
+	useMemo(() => {
+		if (!finishLine || !submitTimer) return
+		if ((finishLine - submitTimer) / 1000 > 0) {
+			const currentTime = Date.now()
+
+			const timeout = setTimeout(() => {
+				setSubmitTimer(currentTime)
+			}, 1000)
+
+			return () => clearTimeout(timeout)
+		}
+
+		removeItem()
+		setSubmitTimer(0)
+		setStatusMessage(null)
+	}, [finishLine, submitTimer, removeItem])
 
 	const onError = () => {
 		setHasSubmitted(true)
@@ -49,8 +72,12 @@ export const Form = () => {
 				import.meta.env.VITE_EMAILJS_PUBLIC_KEY
 			)
 
+			const currentTime = Date.now()
+
 			setStatusMessage('Message sent successfully!')
 			setHasSubmitted(false)
+			setItem(currentTime + 60000)
+			setSubmitTimer(currentTime)
 
 			reset(formDefaultValues)
 		} catch (err) {
@@ -59,6 +86,9 @@ export const Form = () => {
 			setIsSending(false)
 		}
 	}, onError)
+
+	const currentTimer =
+		finishLine && submitTimer && Math.floor((finishLine - submitTimer) / 1000)
 
 	return (
 		<form
@@ -78,13 +108,19 @@ export const Form = () => {
 				))}
 			</div>
 			<Button
-				className="z-1 border-2 border-darker-500 text-[16px] text-center text-bold pt-1 pb-1 pl-4.75 pr-4.75 text-darker-500 sm:text-[20px] rounded-md w-fit cursor-pointer transition text-bold text-2xl disabled:brightness-25 disabled:cursor-not-allowed self-center hover:brightness-125 hover:scale-105 disabled:hover:scale-100"
+				className="relative z-1 border-2 border-darker-500 text-[16px] text-center text-bold mt-2 pt-1 pb-1 pl-4.75 pr-4.75 text-darker-500 sm:text-[20px] rounded-md w-fit cursor-pointer transition text-bold text-2xl disabled:brightness-25 disabled:cursor-not-allowed self-center hover:brightness-125 hover:scale-105 disabled:hover:scale-100"
 				type="submit"
-				disabled={isLocked}
+				disabled={!!isLocked}
 			>
 				Send
+				{!!currentTimer && (
+					<p className="absolute -top-5.5 left-2 text-green-500 text-sm">
+						<span>00:</span>
+						<span>00:</span>
+						<span>{currentTimer >= 10 ? currentTimer : `0${currentTimer}`}</span>
+					</p>
+				)}
 			</Button>
-
 			{statusMessage && (
 				<p
 					className={`text-center ${statusMessage.includes('successfully') ? 'text-green-500' : 'text-red-500'}`}
