@@ -1,25 +1,35 @@
 import { useEffect } from 'react'
 
-import { useLoaderContext } from '@context'
-import { useTextContext } from '@context'
+import { useErrorContext, useLoaderContext, useTextContext } from '@context'
+import { FALLBACK_STATE } from '@constants'
 
 import { getTextData } from './utils'
 
 export const useDatabase = () => {
 	const { setTextData } = useTextContext()
 	const { setLoading } = useLoaderContext()
+	const { setError } = useErrorContext()
 
 	useEffect(() => {
 		const getData = async () => {
-			const data = await getTextData()
+			try {
+				const data = await getTextData()
 
-			setTextData(data)
-			setLoading(false)
+				setTextData(data)
+				setLoading(false)
+			} catch (err) {
+				if (err) {
+					setError(true)
+					setTextData(FALLBACK_STATE)
+					setLoading(false)
+				}
+			}
 		}
+
 		const timeout = setTimeout(() => {
 			getData()
 		}, 1000)
 
 		return () => clearTimeout(timeout)
-	}, [setTextData, setLoading])
+	}, [setTextData, setLoading, setError])
 }

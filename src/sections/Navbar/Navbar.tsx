@@ -4,7 +4,7 @@ export const Navbar = () => {
 	return (
 		<header id="header" className="pt-2">
 			<nav
-				className={`grid grid-cols-1 items-center mr-4 ml-4 sm:grid-cols-3 sm:ml-6 sm:mr-6`}
+				className={`grid grid-cols-2 items-center mr-4 ml-4 sm:grid-cols-3 sm:ml-6 sm:mr-6`}
 			>
 				<Navigation desktopMode={true} />
 				<Button

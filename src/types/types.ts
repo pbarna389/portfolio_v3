@@ -17,6 +17,7 @@ export type IconKeys =
 	| 'mail'
 	| 'telephone'
 	| 'arrowUp'
+	| 'error'
 	| 'default'
 
 export type IconsType<Key extends string> = {

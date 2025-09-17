@@ -1,11 +1,22 @@
-import { About, Contact, Footer, Hero, Menu, Navbar, NavToTopBtn, Skills } from '@section'
+import {
+	About,
+	Contact,
+	ErrorIcon,
+	Footer,
+	Hero,
+	Menu,
+	Navbar,
+	NavToTopBtn,
+	Skills
+} from '@section'
 
-import { useLoaderContext } from '@context'
+import { useErrorContext, useLoaderContext } from '@context'
 import { Loader } from '@components'
 import { useDatabase } from '@hooks'
 
 function App() {
 	const { loading } = useLoaderContext()
+	const { error } = useErrorContext()
 
 	useDatabase()
 
@@ -18,6 +29,7 @@ function App() {
 			<Navbar />
 			<Menu />
 			<NavToTopBtn />
+			{error && <ErrorIcon />}
 			<main className="space-y-6 sm:space-y-10">
 				<Hero />
 				<About />
