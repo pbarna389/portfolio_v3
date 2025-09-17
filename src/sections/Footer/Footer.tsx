@@ -10,7 +10,6 @@ export const Footer = () => {
 
 	return (
 		<footer className="flex flex-col gap-4 justify-center items-center relative sm:justify-between bg-[#FFF]/4 w-full pt-8 pr-4 pl-4 pb-[calc(1.25rem-1px)] sm:mt-8 sm:pl-6 sm:pr-6 sm:pt-8 sm:gap-10">
-			<h2>Logo</h2>
 			<Navigation desktopMode={true} />
 			<IconCollection
 				size={20}

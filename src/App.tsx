@@ -14,11 +14,11 @@ function App() {
 	}
 
 	return (
-		<div className="flex flex-col gap-12 sm:gap-20">
+		<div className="space-y-6 sm:space-y-10">
 			<Navbar />
 			<Menu />
 			<NavToTopBtn />
-			<main className="flex flex-col gap-12 sm:gap-20">
+			<main className="space-y-6 sm:space-y-10">
 				<Hero />
 				<About />
 				<Skills />

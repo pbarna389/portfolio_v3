@@ -9,7 +9,7 @@ export const NavToTopBtn = () => {
 			as={Link}
 			href="#header"
 			target=""
-			className={`fixed flex justify-center items-center bottom-6.5 right-4 rounded-full w-12 h-12 bg-highlight z-1 cursor-pointer border-4 border-darker-900 text-darker-900 transition-all duration-300 hover:bg-darker-800 hover:border-highlight hover:text-highlight hover:*:top-1/4 active:border-white active:text-white ${!visible && '-z-1 bg-transparent border-transparent text-transparent bottom-[25%]'}`}
+			className={`fixed flex justify-center items-center bottom-6.5 right-4 rounded-full w-12 h-12 bg-highlight cursor-pointer border-4 border-darker-900 text-darker-900 transition-all duration-300 hover:bg-darker-800 hover:border-highlight hover:text-highlight hover:*:top-1/4 active:border-white active:text-white ${!visible ? '-z-2 bg-transparent border-transparent text-transparent bottom-[25%]' : 'z-1'}`}
 		>
 			<Icon
 				name="arrowUp"
