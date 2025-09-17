@@ -10,13 +10,12 @@ export const useLocalStorage = <T>(
 	const storageValue = JSON.parse(storageItem as string) as T
 
 	useMemo(() => {
-		if (!setter) return
-		if (storageValue) {
-			const currentTime = Date.now() as T
+		if (!setter || !storageValue) return
 
-			setValue(storageValue)
-			setter(currentTime)
-		}
+		const currentTime = Date.now() as T
+
+		setValue(storageValue)
+		setter(currentTime)
 	}, [storageValue, setter])
 
 	const setItem = (starterValue: T) => {
@@ -25,6 +24,7 @@ export const useLocalStorage = <T>(
 
 	const removeItem = () => {
 		localStorage.removeItem(key)
+		setter(null)
 	}
 
 	return [value, { setItem, removeItem }] as const

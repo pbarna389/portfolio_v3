@@ -8,7 +8,7 @@ import emailjs from '@emailjs/browser'
 import { Button, InputFactory } from '@components'
 import { useLocalStorage } from '@hooks'
 
-import { formDefaultValues, formInputs } from './constants'
+import { BASE_COUNTER_TIME, FORM_DEFAULT_VALUES, FORM_INPUTS } from './constants'
 
 import type { ContactFormDataType } from './schema'
 import { ContactFormSchema } from './schema'
@@ -30,7 +30,7 @@ export const Form = () => {
 		formState: { errors, isValid }
 	} = useForm<ContactFormDataType>({
 		resolver: zodResolver(ContactFormSchema),
-		defaultValues: formDefaultValues
+		defaultValues: FORM_DEFAULT_VALUES
 	})
 
 	const isLocked =
@@ -79,10 +79,10 @@ export const Form = () => {
 
 			setStatusMessage('Message sent successfully!')
 			setHasSubmitted(false)
-			setItem(currentTime + 1800000)
+			setItem(currentTime + BASE_COUNTER_TIME)
 			setSubmitTimer(currentTime)
 
-			reset(formDefaultValues)
+			reset(FORM_DEFAULT_VALUES)
 		} catch {
 			setStatusMessage('Failed to send message. Please try again.')
 		} finally {
@@ -103,7 +103,7 @@ export const Form = () => {
 			className="w-full sm:w-3/4 flex flex-col gap-[calc(0.75rem+1px)]"
 		>
 			<div className="flex flex-col gap-8 justify-center items-center w-full sm:grid sm:grid-cols-2 sm:gap-6">
-				{formInputs.map(({ name, placeholder, type }) => (
+				{FORM_INPUTS.map(({ name, placeholder, type }) => (
 					<InputFactory<ContactFormDataType>
 						key={name}
 						inputDetails={{ name, placeholder }}

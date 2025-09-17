@@ -1,21 +1,21 @@
 import z from 'zod'
 
-import { contactSchemaConstants } from './constants'
+import { CONTACT_SCHEMA_CONSTANTS } from './constants'
 
 const phoneRegex = /^\+?[0-9\s\-()]{7,20}$/
 
 export const ContactFormSchema = z.object({
-	name: z.string().min(contactSchemaConstants.name.minLength, {
-		error: contactSchemaConstants.name.minErrorMessage()
+	name: z.string().min(CONTACT_SCHEMA_CONSTANTS.name.minLength, {
+		error: CONTACT_SCHEMA_CONSTANTS.name.minErrorMessage()
 	}),
 	email: z.email(),
 	title: z
 		.string()
-		.min(contactSchemaConstants.title.minLength, {
-			error: contactSchemaConstants.title.minErrorMessage()
+		.min(CONTACT_SCHEMA_CONSTANTS.title.minLength, {
+			error: CONTACT_SCHEMA_CONSTANTS.title.minErrorMessage()
 		})
-		.max(contactSchemaConstants.title.maxLength, {
-			error: contactSchemaConstants.title.maxErrorMessage()
+		.max(CONTACT_SCHEMA_CONSTANTS.title.maxLength, {
+			error: CONTACT_SCHEMA_CONSTANTS.title.maxErrorMessage()
 		}),
 	phone: z
 		.string()
@@ -24,11 +24,11 @@ export const ContactFormSchema = z.object({
 		.regex(phoneRegex, 'Invalid phone number format'),
 	details: z
 		.string()
-		.min(contactSchemaConstants.details.minLength, {
-			error: contactSchemaConstants.details.minErrorMessage()
+		.min(CONTACT_SCHEMA_CONSTANTS.details.minLength, {
+			error: CONTACT_SCHEMA_CONSTANTS.details.minErrorMessage()
 		})
-		.max(contactSchemaConstants.details.maxLength, {
-			error: contactSchemaConstants.details.maxErrorMessage()
+		.max(CONTACT_SCHEMA_CONSTANTS.details.maxLength, {
+			error: CONTACT_SCHEMA_CONSTANTS.details.maxErrorMessage()
 		})
 })
 
