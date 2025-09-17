@@ -1,2 +1,2 @@
 export { TextContextProvider } from './textContext'
-export { useLoaderContext, useTextContext } from './textContext'
+export { useErrorContext, useLoaderContext, useTextContext } from './textContext'

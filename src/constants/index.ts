@@ -1,1 +1,1 @@
-export { TEXT_STATE_BASEVALUE } from './constants'
+export { FALLBACK_STATE, TEXT_STATE_BASEVALUE } from './constants'

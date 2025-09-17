@@ -6,6 +6,7 @@ import { FaHtml5 } from 'react-icons/fa'
 import { FaCss3Alt } from 'react-icons/fa'
 import { FaArrowUp } from 'react-icons/fa'
 import { FaQuestionCircle } from 'react-icons/fa'
+import { FaExclamation } from 'react-icons/fa'
 import { FaGithub } from 'react-icons/fa6'
 import { FaDownload } from 'react-icons/fa6'
 import { RiNextjsFill } from 'react-icons/ri'
@@ -39,6 +40,7 @@ const Icons: IconsType<IconKeys> = {
 	mail: CiMail,
 	telephone: BsTelephone,
 	arrowUp: FaArrowUp,
+	error: FaExclamation,
 	default: FaQuestionCircle
 }
 
