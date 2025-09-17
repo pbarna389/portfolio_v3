@@ -1,7 +1,6 @@
 import { useEffect } from 'react'
 
 import { useErrorContext, useLoaderContext, useTextContext } from '@context'
-import { FALLBACK_STATE } from '@constants'
 
 import { getTextData } from './utils'
 
@@ -20,7 +19,6 @@ export const useDatabase = () => {
 			} catch (err) {
 				if (err) {
 					setError(true)
-					setTextData(FALLBACK_STATE)
 					setLoading(false)
 				}
 			}

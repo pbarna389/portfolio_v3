@@ -2,7 +2,7 @@ import type { InputTypeKeys } from '@types'
 
 import type { ContactFormDataType } from '../schema'
 
-export const contactSchemaConstants = {
+export const CONTACT_SCHEMA_CONSTANTS = {
 	name: {
 		minLength: 5,
 		minErrorMessage() {
@@ -31,7 +31,7 @@ export const contactSchemaConstants = {
 	}
 }
 
-export const formInputs: {
+export const FORM_INPUTS: {
 	name: keyof ContactFormDataType
 	placeholder: string
 	type: InputTypeKeys
@@ -43,10 +43,12 @@ export const formInputs: {
 	{ name: 'details', type: 'textarea', placeholder: 'Your message' }
 ]
 
-export const formDefaultValues = {
+export const FORM_DEFAULT_VALUES = {
 	name: '',
 	title: '',
 	details: '',
 	phone: '',
 	email: ''
 }
+
+export const BASE_COUNTER_TIME = 300000

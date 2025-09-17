@@ -1,22 +1,6 @@
 import type { FiresbaseDataType } from '@types'
 
-export const TEXT_STATE_BASEVALUE = {
-	navLinks: [],
-	aboutMe: {
-		heading: '',
-		text: ''
-	},
-	hero: {
-		header1: '',
-		header2: '',
-		header3: ''
-	},
-	profileLinks: [],
-	contacts: [],
-	skills: []
-}
-
-export const FALLBACK_STATE: FiresbaseDataType = {
+export const TEXT_STATE_BASEVALUE: FiresbaseDataType = {
 	navLinks: ['about me', 'skills', 'portfolio', 'contact me'],
 	aboutMe: {
 		heading: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit.',
