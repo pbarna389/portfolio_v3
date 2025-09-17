@@ -3,10 +3,17 @@
 @theme {
 	--color-darkBg: #121212;
 
-	--color-darker-300: #bababa;
-	--color-darker-500: #959595;
-	--color-darker-600: #707070;
-	--color-darker-700: #575757;
+	--color-darker-100: #ffffff;
+	--color-darker-200: #f5f5f5;
+	--color-darker-300: #e0e0e0;
+
+	--color-darker-400: #d0d0d0;
+	--color-darker-500: #c0c0c0;
+	--color-darker-600: #a8a8a8;
+
+	--color-darker-700: #909090;
+	--color-darker-800: #787878;
+	--color-darker-900: #606060;
 
 	--color-normal-100: #fff;
 	--color-normal-300: #dfdfdf;
@@ -17,6 +24,8 @@
 	--font-base: 'Lato', sans-serif;
 
 	--breakpoint-xs: 25rem;
+
+	--animate-fullRotate: fullRotation 1s linear infinite;
 }
 
 @layer base {

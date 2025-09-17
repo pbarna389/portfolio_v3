@@ -1,7 +1,6 @@
 import { useTextContext } from '@context'
-import { IconCollection, Link } from '@components'
+import { Background, IconCollection, Link } from '@components'
 
-import { Background } from './Background'
 import { TitleHeader } from './TitleHeader'
 
 export const Title = () => {
