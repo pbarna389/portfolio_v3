@@ -17,8 +17,11 @@ export const Form = () => {
 	const [hasSubmitted, setHasSubmitted] = useState(false)
 	const [isSending, setIsSending] = useState(false)
 	const [statusMessage, setStatusMessage] = useState<string | null>(null)
-	const [submitTimer, setSubmitTimer] = useState<number>()
-	const [finishLine, { setItem, removeItem }] = useLocalStorage<number>('submitTimer')
+	const [submitTimer, setSubmitTimer] = useState<number | null>(null)
+	const [finishLine, { setItem, removeItem }] = useLocalStorage<number>(
+		'submitTimer',
+		setSubmitTimer
+	)
 
 	const {
 		register,
@@ -37,19 +40,19 @@ export const Form = () => {
 
 	useMemo(() => {
 		if (!finishLine || !submitTimer) return
-		if ((finishLine - submitTimer) / 1000 > 0) {
-			const currentTime = Date.now()
 
+		const currentTime = Date.now()
+
+		if ((finishLine - submitTimer) / 1000 > 0) {
 			const timeout = setTimeout(() => {
 				setSubmitTimer(currentTime)
 			}, 1000)
 
 			return () => clearTimeout(timeout)
+		} else if ((finishLine - submitTimer) / 1000 < 1) {
+			removeItem()
+			setStatusMessage(null)
 		}
-
-		removeItem()
-		setSubmitTimer(0)
-		setStatusMessage(null)
 	}, [finishLine, submitTimer, removeItem])
 
 	const onError = () => {
@@ -76,19 +79,22 @@ export const Form = () => {
 
 			setStatusMessage('Message sent successfully!')
 			setHasSubmitted(false)
-			setItem(currentTime + 60000)
+			setItem(currentTime + 1800000)
 			setSubmitTimer(currentTime)
 
 			reset(formDefaultValues)
-		} catch (err) {
+		} catch {
 			setStatusMessage('Failed to send message. Please try again.')
 		} finally {
 			setIsSending(false)
 		}
 	}, onError)
 
-	const currentTimer =
+	const remainingTime =
 		finishLine && submitTimer && Math.floor((finishLine - submitTimer) / 1000)
+	const currentSecond = remainingTime && remainingTime % 60
+	const currentMinute = remainingTime && Math.floor((remainingTime / 60) % 60)
+	const currentHour = remainingTime && Math.floor((remainingTime / 3600) % 60)
 
 	return (
 		<form
@@ -113,11 +119,15 @@ export const Form = () => {
 				disabled={!!isLocked}
 			>
 				Send
-				{!!currentTimer && (
-					<p className="absolute -top-5.5 left-2 text-green-500 text-sm">
-						<span>00:</span>
-						<span>00:</span>
-						<span>{currentTimer >= 10 ? currentTimer : `0${currentTimer}`}</span>
+				{!!remainingTime && (
+					<p className="absolute -top-5.5 left-2 text-red-500 text-sm">
+						<span>{currentHour && currentHour >= 10 ? currentHour : `0${currentHour}`}:</span>
+						<span>
+							{currentMinute && currentMinute >= 10 ? currentMinute : `0${currentMinute}`}:
+						</span>
+						<span>
+							{currentSecond && currentSecond >= 10 ? currentSecond : `0${currentSecond}`}
+						</span>
 					</p>
 				)}
 			</Button>
