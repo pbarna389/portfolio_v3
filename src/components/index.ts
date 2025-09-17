@@ -1,3 +1,4 @@
+export { Background } from './Background'
 export { Button } from './Button'
 export { Icon, IconCollection } from './IconCollection'
 export { InputFactory } from './InputFactory'
