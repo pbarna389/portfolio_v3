@@ -25,6 +25,7 @@ export const useLocalStorage = <T>(
 	const removeItem = () => {
 		localStorage.removeItem(key)
 		setter(null)
+		setValue(undefined)
 	}
 
 	return [value, { setItem, removeItem }] as const
