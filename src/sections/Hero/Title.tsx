@@ -22,7 +22,7 @@ export const Title = () => {
 					as={Link}
 					href="#contact"
 					target=""
-					className="bg-highlight text-[16px] text-center rounded-md pt-1 pb-1 pl-6 pr-6 sm:text-[20px] transition hover:brightness-125 hover:scale-105"
+					className="bg-highlight text-[16px] text-center text-black rounded-md pt-1 pb-1 pl-6 pr-6 sm:text-[20px] transition hover:active:brightness-125 hover:scale-105"
 				>
 					Hire me
 				</Button>
