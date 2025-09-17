@@ -3,7 +3,7 @@ import type { HrefTypes } from '@types'
 
 type NavigationLinkProps = {
 	text: string
-	setState?: (() => void) | undefined
+	setState?: () => void
 }
 
 const NavigationLink = ({ setState, text }: NavigationLinkProps) => {
@@ -14,7 +14,7 @@ const NavigationLink = ({ setState, text }: NavigationLinkProps) => {
 			<Link
 				href={refLink}
 				target=""
-				className="cursor-pointer hover:text-darker-300 transition duration-300 capitalize"
+				className="cursor-pointer hover:text-darker-200 transition duration-300 capitalize"
 				onClick={setState}
 			>
 				{text}

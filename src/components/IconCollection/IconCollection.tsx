@@ -73,7 +73,7 @@ export const IconCollection = ({
 						<Link
 							key={`icon-${el.name}`}
 							href={el.link}
-							className={`flex items-center justify-center p-2 border-1 border-darker-700 bg-white/4 rounded-full h-8 w-8 hover:border-darker-400 hover:bg-white/12 hover:scale-125 transition ${HIGHLIGHT_CLASSES[el.name]} sm:text-[#959595] ${HOVER_HIGHLIGHT[el.name]} hover:brightness-125 `}
+							className={`flex items-center justify-center p-2 border-1 border-darker-700 bg-white/4 rounded-full h-8 w-8 hover:bg-white/12 hover:scale-125 transition ${HIGHLIGHT_CLASSES[el.name]} sm:text-[#959595] ${HOVER_HIGHLIGHT[el.name]}  hover:brightness-125 `}
 						>
 							<Icon name={el.name} className={`fill-current transition`} />
 						</Link>
