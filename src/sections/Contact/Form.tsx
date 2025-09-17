@@ -3,6 +3,8 @@ import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 
+import emailjs from '@emailjs/browser'
+
 import { Button, InputFactory } from '@components'
 
 import { formDefaultValues, formInputs } from './constants'
@@ -12,6 +14,8 @@ import { ContactFormSchema } from './schema'
 
 export const Form = () => {
 	const [hasSubmitted, setHasSubmitted] = useState(false)
+	const [isSending, setIsSending] = useState(false)
+	const [statusMessage, setStatusMessage] = useState<string | null>(null)
 
 	const {
 		register,
@@ -23,16 +27,37 @@ export const Form = () => {
 		defaultValues: formDefaultValues
 	})
 
-	const isLocked = !isValid && hasSubmitted
+	const isLocked = (!isValid && hasSubmitted) || isSending
 
 	const onError = () => {
 		setHasSubmitted(true)
 	}
 
-	const handleSubmit = formSubmit((data) => {
-		alert(`Works like a charm! Data: ${JSON.stringify(data)}`)
+	const handleSubmit = formSubmit(async (data) => {
+		setIsSending(true)
+		setStatusMessage(null)
 
-		reset(formDefaultValues)
+		try {
+			await emailjs.send(
+				import.meta.env.VITE_EMAILJS_SERVICE_ID,
+				import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+				{
+					from_name: `${data.name}: ${data.title}`,
+					from_email: data.email,
+					message: `${data.details} \n Phone number:${data.phone}`
+				},
+				import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+			)
+
+			setStatusMessage('Message sent successfully!')
+			setHasSubmitted(false)
+
+			reset(formDefaultValues)
+		} catch (err) {
+			setStatusMessage('Failed to send message. Please try again.')
+		} finally {
+			setIsSending(false)
+		}
 	}, onError)
 
 	return (
@@ -59,6 +84,14 @@ export const Form = () => {
 			>
 				Send
 			</Button>
+
+			{statusMessage && (
+				<p
+					className={`text-center ${statusMessage.includes('successfully') ? 'text-green-500' : 'text-red-500'}`}
+				>
+					{statusMessage}
+				</p>
+			)}
 		</form>
 	)
 }
