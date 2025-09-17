@@ -29,7 +29,7 @@ export const Skill = ({ name, progress, inViewDesktop, children }: SkillsProps) 
 	return (
 		<div className="flex flex-col items-center">
 			<div className="relative flex flex-row flex-wrap items-center justify-center">
-				<svg className="min-h-[100px] max-h-[175px] min-w-[100px] max-w-[175px] h-[max(calc(100vw*0.5),175px)] w-[max(calc(100vw*0.5),175px)] transform -rotate-90">
+				<svg className="min-h-[100px] max-h-[150px] min-w-[100px] max-w-[150px] h-[max(calc(100vw*0.5),150px)] w-[max(calc(100vw*0.5),150px)] transform -rotate-90">
 					<circle cx="50%" cy="50%" r={radius} stroke="#707070" strokeWidth="12" fill="none" />
 					<circle
 						cx="50%"

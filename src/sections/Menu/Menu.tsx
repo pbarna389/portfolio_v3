@@ -11,7 +11,7 @@ export const Menu = () => {
 
 	return (
 		<div
-			className={`fixed top-8 right-6 h-5 w-5 *:transition sm:hidden z-2 cursor-pointer`}
+			className={`fixed top-4 right-3.5 h-5 w-5 *:transition sm:hidden z-2 cursor-pointer`}
 			onClick={handleClick}
 		>
 			<button

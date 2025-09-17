@@ -9,7 +9,7 @@ type IconProps = {
 
 export const IconWithText = ({ name, text, href, ...props }: IconProps) => {
 	return (
-		<div className="text-center flex gap-1 items-center justify-center">
+		<div className="text-center flex gap-1 items-center justify-center *:transition *:hover:brightness-120">
 			<Icon name={name} {...props} />
 			<Link href={href} className="text-[darker-500] text-[16px] sm:text-md font-bold">
 				{text}

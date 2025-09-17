@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 
-import { InputFactory } from '@components'
+import { Button, InputFactory } from '@components'
 
 import { formDefaultValues, formInputs } from './constants'
 
@@ -52,13 +52,13 @@ export const Form = () => {
 					/>
 				))}
 			</div>
-			<button
-				className="z-1 border-2 border-darker-500 text-[16px] text-center text-bold pt-1 pb-1 pl-4.75 pr-4.75 text-darker-500 sm:text-[20px] rounded-md w-fit cursor-pointer transition duration-500 text-bold text-2xl disabled:brightness-25 disabled:cursor-not-allowed self-center hover:brigtness-125 hover:scale-105 disabled:hover:scale-100"
+			<Button
+				className="z-1 border-2 border-darker-500 text-[16px] text-center text-bold pt-1 pb-1 pl-4.75 pr-4.75 text-darker-500 sm:text-[20px] rounded-md w-fit cursor-pointer transition text-bold text-2xl disabled:brightness-25 disabled:cursor-not-allowed self-center hover:brightness-125 hover:scale-105 disabled:hover:scale-100"
 				type="submit"
 				disabled={isLocked}
 			>
 				Send
-			</button>
+			</Button>
 		</form>
 	)
 }
