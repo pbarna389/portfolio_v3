@@ -1,9 +1,9 @@
 import { createContext } from 'react'
 
 type FormStopwatchInitialStateType = {
-	statusText?: string
-	timer?: number
-	timerEnd?: number
+	statusText?: string | null
+	timer?: number | null
+	timerEnd?: number | null
 }
 
 const initialState: FormStopwatchInitialStateType = {}

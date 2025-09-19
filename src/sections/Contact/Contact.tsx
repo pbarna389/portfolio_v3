@@ -18,7 +18,9 @@ export const Contact = () => {
 				title={'Contact Me'}
 				subText={'Lorem ipsum dolor sit amet consectetur adipisicing elit.'}
 			/>
-			<Form />
+			<FormStopwatchContextProvider storageKey="submit-disable-timer">
+				<Form />
+			</FormStopwatchContextProvider>
 		</section>
 	)
 }

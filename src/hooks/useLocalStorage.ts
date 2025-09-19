@@ -2,9 +2,9 @@ import { type Dispatch, type SetStateAction, useMemo, useState } from 'react'
 
 export const useLocalStorage = <T>(
 	key: string,
-	setter: Dispatch<SetStateAction<T | undefined>>
+	setter: Dispatch<SetStateAction<T | null>>
 ) => {
-	const [value, setValue] = useState<T>()
+	const [value, setValue] = useState<T | null>(null)
 
 	const storageItem = localStorage.getItem(key)
 	const storageValue = JSON.parse(storageItem as string) as T
@@ -24,8 +24,8 @@ export const useLocalStorage = <T>(
 
 	const removeItem = () => {
 		localStorage.removeItem(key)
-		setter(undefined)
-		setValue(undefined)
+		setter(null)
+		setValue(null)
 	}
 
 	return [value, { setItem, removeItem }] as const

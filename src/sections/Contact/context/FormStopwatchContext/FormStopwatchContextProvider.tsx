@@ -13,8 +13,8 @@ export const FormStopwatchContextProvider = ({
 	children,
 	storageKey
 }: FormStopwatchContextProviderProps) => {
-	const [statusText, setStatusText] = useState<string | undefined>()
-	const [timer, setTimer] = useState<number | undefined>()
+	const [statusText, setStatusText] = useState<string | null>(null)
+	const [timer, setTimer] = useState<number | null>(0)
 	const [timerEnd, { setItem, removeItem }] = useLocalStorage<number>(storageKey, setTimer)
 
 	const stopwatchContextValue = useMemo(() => {
@@ -22,12 +22,19 @@ export const FormStopwatchContextProvider = ({
 	}, [statusText, timer, timerEnd])
 
 	const stopwatchSetterContextValue = useMemo(() => {
-		return { setStatusText, setItem, removeItem }
-	}, [removeItem, setItem, setStatusText])
+		return {
+			setStatusText,
+			setTimer,
+			setLocalStorageItem: setItem,
+			removeLocalStorageItem: removeItem
+		}
+	}, [removeItem, setItem, setTimer, setStatusText])
 
 	return (
-		<FormStopwatchSetterContext value={stopwatchSetterContextValue}>
-			<FormStopwatchContext value={stopwatchContextValue}>{children}</FormStopwatchContext>
-		</FormStopwatchSetterContext>
+		<FormStopwatchContext value={stopwatchContextValue}>
+			<FormStopwatchSetterContext value={stopwatchSetterContextValue}>
+				{children}
+			</FormStopwatchSetterContext>
+		</FormStopwatchContext>
 	)
 }
