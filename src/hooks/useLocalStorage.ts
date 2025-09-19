@@ -1,30 +1,59 @@
-import { type Dispatch, type SetStateAction, useMemo, useState } from 'react'
+import type { ActionDispatch, Dispatch, SetStateAction } from 'react'
+import { useMemo, useState } from 'react'
 
-export const useLocalStorage = <T>(
+import type { StopwatchAction } from 'sections/Contact/context/FormStopwatchContext/reducer'
+
+export const useLocalStorage = <T extends number>(
 	key: string,
-	setter: Dispatch<SetStateAction<T | null>>
+	dispatch?: ActionDispatch<[action: StopwatchAction<T>]>,
+	setter?: Dispatch<SetStateAction<T | null>>
 ) => {
-	const [value, setValue] = useState<T>()
+	const [value, setValue] = useState<T | null>(null)
 
 	const storageItem = localStorage.getItem(key)
 	const storageValue = JSON.parse(storageItem as string) as T
 
 	useMemo(() => {
-		if (!setter || !storageValue) return
+		if (!storageValue) return
 
 		const currentTime = Date.now() as T
 
-		setValue(storageValue)
-		setter(currentTime)
-	}, [storageValue, setter])
+		if (setter) {
+			setValue(storageValue)
+			setter(currentTime)
+		}
+		if (dispatch) {
+			dispatch({
+				type: 'TIMER_RESTORE',
+				payload: { timerStart: currentTime, timerEnd: storageValue }
+			})
+		}
+	}, [storageValue, setter, dispatch])
 
-	const setItem = (starterValue: T) => {
-		localStorage.setItem(key, JSON.stringify(starterValue))
+	const setItem = (starterValue: T, endValue: T) => {
+		localStorage.setItem(key, JSON.stringify(endValue))
+
+		if (dispatch) {
+			dispatch({
+				type: 'TIMER_START',
+				payload: {
+					statusText: 'Message sent successfully!',
+					timerStart: starterValue,
+					timerEnd: endValue
+				}
+			})
+		}
 	}
 
 	const removeItem = () => {
 		localStorage.removeItem(key)
-		setter(null)
+		if (setter) {
+			setter(null)
+		}
+		if (dispatch) {
+			dispatch({ type: 'RESET_STATE' })
+		}
+		setValue(null)
 	}
 
 	return [value, { setItem, removeItem }] as const

@@ -1,6 +1,8 @@
 import { SectionHeader } from '@components'
 import { useIntersectionObserver } from '@hooks'
 
+import { FormStopwatchContextProvider } from './context'
+
 import { Form } from './Form'
 
 export const Contact = () => {
@@ -16,7 +18,9 @@ export const Contact = () => {
 				title={'Contact Me'}
 				subText={'Lorem ipsum dolor sit amet consectetur adipisicing elit.'}
 			/>
-			<Form />
+			<FormStopwatchContextProvider storageKey="submit-disable-timer">
+				<Form />
+			</FormStopwatchContextProvider>
 		</section>
 	)
 }
