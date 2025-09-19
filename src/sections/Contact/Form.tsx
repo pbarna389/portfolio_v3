@@ -38,7 +38,6 @@ export const Form = () => {
 	const handleSubmit = formSubmit(async (data) => {
 		setIsSending(true)
 		dispatch({ type: 'UPDATE_STATUS_TEXT', payload: null })
-
 		try {
 			await emailjs.send(
 				import.meta.env.VITE_EMAILJS_SERVICE_ID,
@@ -52,13 +51,10 @@ export const Form = () => {
 			)
 
 			const currentTime = Date.now()
+			const endTime = currentTime + BASE_COUNTER_TIME
 
 			setHasSubmitted(false)
-			setLocalStorageItem(currentTime + BASE_COUNTER_TIME)
-			dispatch({
-				type: 'TIMER_START',
-				payload: { statusText: 'Message sent successfully!', timer: currentTime }
-			})
+			setLocalStorageItem(currentTime, endTime)
 
 			reset(FORM_DEFAULT_VALUES)
 		} catch {

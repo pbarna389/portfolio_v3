@@ -1,8 +1,8 @@
-import { useMemo } from 'react'
+import { useEffect, useState } from 'react'
 
 import { Button } from '@components'
 
-import { useFormStopwatch, useStopwatchDispatch, useStopwatchSetters } from './context'
+import { useFormStopwatch, useStopwatchSetters } from './context'
 
 type SubmitBtnProps = {
 	hasSubmitted: boolean
@@ -11,25 +11,34 @@ type SubmitBtnProps = {
 }
 
 export const SubmitBtn = ({ hasSubmitted, isSending, isValid }: SubmitBtnProps) => {
-	const { statusText, timer, timerEnd } = useFormStopwatch()
+	const { statusText, timerStart, timerEnd } = useFormStopwatch()
 	const { removeLocalStorageItem } = useStopwatchSetters()
-	const { dispatch } = useStopwatchDispatch()
 
-	useMemo(() => {
-		if (!timerEnd || !timer) return
+	const [timer, setTimer] = useState<number | null>(timerStart)
+
+	useEffect(() => {
+		if (timerStart && !timer) {
+			const timeout = setTimeout(() => {
+				setTimer(timerStart)
+			}, 0)
+
+			return () => clearTimeout(timeout)
+		}
+
+		if (!timerEnd || !timerStart || !timer) return
 
 		const currentTime = Date.now()
 
-		if ((timerEnd - timer) / 1000 > 0) {
+		if ((timerEnd - timer) / 1000 >= 1) {
 			const timeout = setTimeout(() => {
-				dispatch({ type: 'UPDATE_TIMER', payload: currentTime })
+				setTimer(currentTime)
 			}, 1000)
 
 			return () => clearTimeout(timeout)
 		} else if ((timerEnd - timer) / 1000 < 1) {
 			removeLocalStorageItem()
 		}
-	}, [timerEnd, timer, removeLocalStorageItem, dispatch])
+	}, [timerEnd, timerStart, timer, removeLocalStorageItem])
 
 	const isLocked =
 		(!isValid && hasSubmitted) ||

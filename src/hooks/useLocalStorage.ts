@@ -3,9 +3,9 @@ import { useMemo, useState } from 'react'
 
 import type { StopwatchAction } from 'sections/Contact/context/FormStopwatchContext/reducer'
 
-export const useLocalStorage = <T>(
+export const useLocalStorage = <T extends number>(
 	key: string,
-	dispatch?: ActionDispatch<[action: StopwatchAction]>,
+	dispatch?: ActionDispatch<[action: StopwatchAction<T>]>,
 	setter?: Dispatch<SetStateAction<T | null>>
 ) => {
 	const [value, setValue] = useState<T | null>(null)
@@ -17,18 +17,32 @@ export const useLocalStorage = <T>(
 		if (!storageValue) return
 
 		const currentTime = Date.now() as T
-		setValue(storageValue)
 
 		if (setter) {
+			setValue(storageValue)
 			setter(currentTime)
 		}
 		if (dispatch) {
-			dispatch({ type: 'UPDATE_TIMER', payload: currentTime as number })
+			dispatch({
+				type: 'TIMER_RESTORE',
+				payload: { timerStart: currentTime, timerEnd: storageValue }
+			})
 		}
 	}, [storageValue, setter, dispatch])
 
-	const setItem = (starterValue: T) => {
-		localStorage.setItem(key, JSON.stringify(starterValue))
+	const setItem = (starterValue: T, endValue: T) => {
+		localStorage.setItem(key, JSON.stringify(endValue))
+
+		if (dispatch) {
+			dispatch({
+				type: 'TIMER_START',
+				payload: {
+					statusText: 'Message sent successfully!',
+					timerStart: starterValue,
+					timerEnd: endValue
+				}
+			})
+		}
 	}
 
 	const removeItem = () => {

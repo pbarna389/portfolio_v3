@@ -51,4 +51,4 @@ export const FORM_DEFAULT_VALUES = {
 	email: ''
 }
 // base value = 300000
-export const BASE_COUNTER_TIME = 30000
+export const BASE_COUNTER_TIME = 300000

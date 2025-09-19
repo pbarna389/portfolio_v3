@@ -2,11 +2,11 @@ import { createContext } from 'react'
 
 import type { StopwatchAction } from './reducer'
 
-type FormStopwatchDispatchInitialStateType = {
-	dispatch?: React.ActionDispatch<[action: StopwatchAction]>
+type FormStopwatchDispatchInitialStateType<T extends number> = {
+	dispatch?: React.ActionDispatch<[action: StopwatchAction<T>]>
 }
 
-const initialState: FormStopwatchDispatchInitialStateType = {
+const initialState: FormStopwatchDispatchInitialStateType<number> = {
 	dispatch: () => {}
 }
 
