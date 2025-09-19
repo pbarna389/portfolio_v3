@@ -7,7 +7,7 @@ import emailjs from '@emailjs/browser'
 
 import { InputFactory } from '@components'
 
-import { useStopwatchSetters } from './context'
+import { useStopwatchDispatch, useStopwatchSetters } from './context'
 import { BASE_COUNTER_TIME, FORM_DEFAULT_VALUES, FORM_INPUTS } from './constants'
 
 import type { ContactFormDataType } from './schema'
@@ -18,7 +18,8 @@ export const Form = () => {
 	const [hasSubmitted, setHasSubmitted] = useState(false)
 	const [isSending, setIsSending] = useState(false)
 
-	const { setStatusText, setTimer, setLocalStorageItem } = useStopwatchSetters()
+	const { setLocalStorageItem } = useStopwatchSetters()
+	const { dispatch } = useStopwatchDispatch()
 
 	const {
 		register,
@@ -36,7 +37,7 @@ export const Form = () => {
 
 	const handleSubmit = formSubmit(async (data) => {
 		setIsSending(true)
-		setStatusText(null)
+		dispatch({ type: 'UPDATE_STATUS_TEXT', payload: null })
 
 		try {
 			await emailjs.send(
@@ -52,14 +53,19 @@ export const Form = () => {
 
 			const currentTime = Date.now()
 
-			setStatusText('Message sent successfully!')
 			setHasSubmitted(false)
 			setLocalStorageItem(currentTime + BASE_COUNTER_TIME)
-			setTimer(currentTime)
+			dispatch({
+				type: 'TIMER_START',
+				payload: { statusText: 'Message sent successfully!', timer: currentTime }
+			})
 
 			reset(FORM_DEFAULT_VALUES)
 		} catch {
-			setStatusText('Failed to send message. Please try again.')
+			dispatch({
+				type: 'UPDATE_STATUS_TEXT',
+				payload: 'Failed to send message. Please try again.'
+			})
 		} finally {
 			setIsSending(false)
 		}

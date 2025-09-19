@@ -2,7 +2,7 @@ import { useMemo } from 'react'
 
 import { Button } from '@components'
 
-import { useFormStopwatch, useStopwatchSetters } from './context'
+import { useFormStopwatch, useStopwatchDispatch, useStopwatchSetters } from './context'
 
 type SubmitBtnProps = {
 	hasSubmitted: boolean
@@ -12,7 +12,8 @@ type SubmitBtnProps = {
 
 export const SubmitBtn = ({ hasSubmitted, isSending, isValid }: SubmitBtnProps) => {
 	const { statusText, timer, timerEnd } = useFormStopwatch()
-	const { removeLocalStorageItem, setTimer } = useStopwatchSetters()
+	const { removeLocalStorageItem } = useStopwatchSetters()
+	const { dispatch } = useStopwatchDispatch()
 
 	useMemo(() => {
 		if (!timerEnd || !timer) return
@@ -21,14 +22,14 @@ export const SubmitBtn = ({ hasSubmitted, isSending, isValid }: SubmitBtnProps) 
 
 		if ((timerEnd - timer) / 1000 > 0) {
 			const timeout = setTimeout(() => {
-				setTimer(currentTime)
+				dispatch({ type: 'UPDATE_TIMER', payload: currentTime })
 			}, 1000)
 
 			return () => clearTimeout(timeout)
 		} else if ((timerEnd - timer) / 1000 < 1) {
 			removeLocalStorageItem()
 		}
-	}, [timerEnd, timer, removeLocalStorageItem, setTimer])
+	}, [timerEnd, timer, removeLocalStorageItem, dispatch])
 
 	const isLocked =
 		(!isValid && hasSubmitted) ||

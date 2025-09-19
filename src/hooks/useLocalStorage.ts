@@ -1,8 +1,12 @@
-import { type Dispatch, type SetStateAction, useMemo, useState } from 'react'
+import type { ActionDispatch, Dispatch, SetStateAction } from 'react'
+import { useMemo, useState } from 'react'
+
+import type { StopwatchAction } from 'sections/Contact/context/FormStopwatchContext/reducer'
 
 export const useLocalStorage = <T>(
 	key: string,
-	setter: Dispatch<SetStateAction<T | null>>
+	dispatch?: ActionDispatch<[action: StopwatchAction]>,
+	setter?: Dispatch<SetStateAction<T | null>>
 ) => {
 	const [value, setValue] = useState<T | null>(null)
 
@@ -10,13 +14,18 @@ export const useLocalStorage = <T>(
 	const storageValue = JSON.parse(storageItem as string) as T
 
 	useMemo(() => {
-		if (!setter || !storageValue) return
+		if (!storageValue) return
 
 		const currentTime = Date.now() as T
-
 		setValue(storageValue)
-		setter(currentTime)
-	}, [storageValue, setter])
+
+		if (setter) {
+			setter(currentTime)
+		}
+		if (dispatch) {
+			dispatch({ type: 'UPDATE_TIMER', payload: currentTime as number })
+		}
+	}, [storageValue, setter, dispatch])
 
 	const setItem = (starterValue: T) => {
 		localStorage.setItem(key, JSON.stringify(starterValue))
@@ -24,7 +33,12 @@ export const useLocalStorage = <T>(
 
 	const removeItem = () => {
 		localStorage.removeItem(key)
-		setter(null)
+		if (setter) {
+			setter(null)
+		}
+		if (dispatch) {
+			dispatch({ type: 'RESET_STATE' })
+		}
 		setValue(null)
 	}
 
