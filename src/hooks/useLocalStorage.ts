@@ -2,7 +2,7 @@ import { type Dispatch, type SetStateAction, useMemo, useState } from 'react'
 
 export const useLocalStorage = <T>(
 	key: string,
-	setter: Dispatch<SetStateAction<T | null>>
+	setter: Dispatch<SetStateAction<T | undefined>>
 ) => {
 	const [value, setValue] = useState<T>()
 
@@ -24,7 +24,7 @@ export const useLocalStorage = <T>(
 
 	const removeItem = () => {
 		localStorage.removeItem(key)
-		setter(null)
+		setter(undefined)
 		setValue(undefined)
 	}
 

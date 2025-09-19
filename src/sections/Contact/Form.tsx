@@ -17,7 +17,7 @@ export const Form = () => {
 	const [hasSubmitted, setHasSubmitted] = useState(false)
 	const [isSending, setIsSending] = useState(false)
 	const [statusMessage, setStatusMessage] = useState<string | null>(null)
-	const [submitTimer, setSubmitTimer] = useState<number | null>(null)
+	const [submitTimer, setSubmitTimer] = useState<number | undefined>(undefined)
 	const [finishLine, { setItem, removeItem }] = useLocalStorage<number>(
 		'submit-disable-timer',
 		setSubmitTimer

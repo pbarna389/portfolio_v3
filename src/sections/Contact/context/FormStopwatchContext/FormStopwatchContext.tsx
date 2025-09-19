@@ -1,5 +1,11 @@
 import { createContext } from 'react'
 
-const initialState = {}
+type FormStopwatchInitialStateType = {
+	statusText?: string
+	timer?: number
+	timerEnd?: number
+}
+
+const initialState: FormStopwatchInitialStateType = {}
 
 export const FormStopwatchContext = createContext<typeof initialState>(initialState)

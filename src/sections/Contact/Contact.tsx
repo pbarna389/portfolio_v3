@@ -1,6 +1,8 @@
 import { SectionHeader } from '@components'
 import { useIntersectionObserver } from '@hooks'
 
+import { FormStopwatchContextProvider } from './context'
+
 import { Form } from './Form'
 
 export const Contact = () => {
