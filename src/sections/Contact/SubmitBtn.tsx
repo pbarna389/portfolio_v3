@@ -50,7 +50,7 @@ export const SubmitBtn = ({ hasSubmitted, isSending, isValid }: SubmitBtnProps) 
 	const remainingTime = timerEnd && timer && Math.floor((timerEnd - timer) / 1000)
 
 	return (
-		<div className="flex flex-col w-fit self-center justify-center items-centerself-center relative z-2 p-5">
+		<div className="flex flex-col w-fit self-center justify-center items-centerself-center relative z-1 p-5">
 			<FormCountdown remainingTime={remainingTime} />
 			<Button
 				className={`border-2 border-darker-500 text-[16px] text-center text-bold pt-1 pb-1 pl-4.75 pr-4.75 text-darker-500 sm:text-[20px] rounded-md w-fit cursor-pointer transition text-bold text-2xl disabled:brightness-25 disabled:cursor-not-allowed self-center hover:brightness-125 hover:scale-105 disabled:hover:scale-100`}
