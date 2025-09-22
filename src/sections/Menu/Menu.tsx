@@ -11,7 +11,7 @@ export const Menu = () => {
 
 	return (
 		<div
-			className={`fixed top-4 right-3.5 h-5 w-5 *:transition sm:hidden z-2 cursor-pointer`}
+			className={`fixed top-4 right-3.5 h-10 w-10 *:transition sm:hidden z-2 cursor-pointer`}
 			onClick={handleClick}
 		>
 			<button
@@ -20,7 +20,7 @@ export const Menu = () => {
 				`}
 			>
 				<span
-					className={`absolute cursor-pointer top-1/2 right-1/6 h-0.5 w-1/2 -translate-y-1/2 rounded bg-highlight transition hover:bg-highlight ${open && 'scale-x-0'}`}
+					className={`absolute cursor-pointer top-1/2 right-1/6 h-0.75 w-1/2 -translate-y-1/2 rounded bg-highlight transition hover:bg-highlight ${open && 'scale-x-0'}`}
 				/>
 			</button>
 			<Navigation open={open} setState={handleClick} />
