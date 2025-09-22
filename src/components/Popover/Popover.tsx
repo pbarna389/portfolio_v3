@@ -5,7 +5,7 @@ type PopoverProps = React.PropsWithChildren & {
 
 export const Popover = ({ hover, className, children }: PopoverProps) => {
 	return (
-		<span className={`${className} scale-0 transition ${hover && 'scale-75'}`}>
+		<span className={`${className} opacity-0 transition ${hover && 'opacity-100'}`}>
 			{children}
 		</span>
 	)
