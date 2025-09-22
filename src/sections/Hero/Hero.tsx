@@ -2,7 +2,7 @@ import { ProfilePic } from '@components'
 import { useIntersectionObserver } from '@hooks'
 
 import { Title } from './Title'
-import img from '../../assets/testPic1.png'
+import img from '../../assets/portfolio02.png'
 
 export const Hero = () => {
 	const { ref, inView } = useIntersectionObserver({ shouldFreeze: true })

@@ -1,7 +1,7 @@
 import {
 	About,
 	Contact,
-	ErrorIcon,
+	DBErrorIndicator,
 	Footer,
 	Hero,
 	Menu,
@@ -29,7 +29,7 @@ function App() {
 			<Navbar />
 			<Menu />
 			<NavToTopBtn />
-			{error && <ErrorIcon />}
+			{error && <DBErrorIndicator />}
 			<main className="space-y-6 sm:space-y-10">
 				<Hero />
 				<About />
