@@ -1,7 +1,7 @@
 import { Icon, Popover } from '@components'
 import { usePopover } from '@hooks'
 
-export const ErrorIcon = () => {
+export const DBErrorIndicator = () => {
 	const {
 		hover,
 		handlers: { handleEnter, handleLeave, handleClick }
@@ -16,9 +16,10 @@ export const ErrorIcon = () => {
 		>
 			<Popover
 				className="absolute w-50 top-4 -left-5 p-1 transform:-translate-x-1/2 transform:translate-y-1/2 text-center font-bold text-xl text-red-800 border-red-800 bg-darker-900 border-2 rounded"
-				text="Some error happened at Firebase, the site maybe missing some data"
 				hover={hover}
-			/>
+			>
+				Some error happened at Firebase, the site maybe missing some data
+			</Popover>
 			<Icon name="error" className="text-red-800 text-3xl" />
 		</div>
 	)

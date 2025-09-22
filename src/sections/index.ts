@@ -1,6 +1,6 @@
 export { About } from './About'
 export { Contact } from './Contact'
-export { ErrorIcon } from './ErrorIcon'
+export { DBErrorIndicator } from './DBErrorIndicator'
 export { Footer } from './Footer'
 export { Hero } from './Hero'
 export { Menu } from './Menu'
