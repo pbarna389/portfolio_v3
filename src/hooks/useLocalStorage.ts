@@ -3,34 +3,34 @@ import { useMemo, useState } from 'react'
 
 import type { StopwatchAction } from 'sections/Contact/context/FormStopwatchContext/reducer'
 
-export const useLocalStorage = <T extends number>(
+export const useLocalStorage = <T extends { expireTime: number }>(
 	key: string,
-	dispatch?: ActionDispatch<[action: StopwatchAction<T>]>,
+	dispatch?: ActionDispatch<[action: StopwatchAction]>,
 	setter?: Dispatch<SetStateAction<T | null>>
 ) => {
 	const [value, setValue] = useState<T | null>(null)
 
-	const storageItem = localStorage.getItem(key)
-	const storageValue = JSON.parse(storageItem as string) as T
-
 	useMemo(() => {
+		const storageItem = localStorage.getItem(key)
+		const storageValue = JSON.parse(storageItem as string) as T
+
 		if (!storageValue) return
 
-		const currentTime = Date.now() as T
-
-		if (setter) {
+		if (storageValue) {
 			setValue(storageValue)
-			setter(currentTime)
 		}
+
+		const currentTime = Date.now()
+
 		if (dispatch) {
 			dispatch({
 				type: 'TIMER_RESTORE',
-				payload: { timerStart: currentTime, timerEnd: storageValue }
+				payload: { timerStart: currentTime, timerEnd: storageValue.expireTime }
 			})
 		}
-	}, [storageValue, setter, dispatch])
+	}, [dispatch, key])
 
-	const setItem = (starterValue: T, endValue: T) => {
+	const setItem = (starterValue: number, endValue: T) => {
 		localStorage.setItem(key, JSON.stringify(endValue))
 
 		if (dispatch) {
@@ -39,7 +39,7 @@ export const useLocalStorage = <T extends number>(
 				payload: {
 					statusText: 'Message sent successfully!',
 					timerStart: starterValue,
-					timerEnd: endValue
+					timerEnd: endValue.expireTime
 				}
 			})
 		}

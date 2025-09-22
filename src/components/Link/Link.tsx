@@ -5,8 +5,8 @@ import type { HrefTypes } from '@types'
 type LinkProps = PropsWithChildren & {
 	href: HrefTypes
 	className?: string
-	target?: string
 	onClick?: (() => void) | undefined
+	target?: string
 }
 
 export const Link = ({

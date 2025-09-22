@@ -1,12 +1,12 @@
 /* eslint-disable default-param-last */
-type StopWatchStateType<T> = {
+type StopWatchStateType = {
 	statusText: null | string
-	timerEnd: null | T
-	timerStart: null | T
+	timerEnd: null | number
+	timerStart: null | number
 }
 
-type UpdateTimerAction<T> = {
-	payload: T
+type UpdateTimerAction = {
+	payload: number
 	type: 'UPDATE_TIMER'
 }
 
@@ -15,19 +15,19 @@ type UpdateStatusTextAction = {
 	type: 'UPDATE_STATUS_TEXT'
 }
 
-type TimerStartAction<T> = {
+type TimerStartAction = {
 	payload: {
 		statusText: string
-		timerEnd: T
-		timerStart: T
+		timerEnd: number
+		timerStart: number
 	}
 	type: 'TIMER_START'
 }
 
-type RestoreAction<T> = {
+type RestoreAction = {
 	payload: {
-		timerEnd: T
-		timerStart: T
+		timerEnd: number
+		timerStart: number
 	}
 	type: 'TIMER_RESTORE'
 }
@@ -36,22 +36,22 @@ type ResetAction = {
 	type: 'RESET_STATE'
 }
 
-export type StopwatchAction<T extends number> =
+export type StopwatchAction =
 	| UpdateStatusTextAction
-	| UpdateTimerAction<T>
+	| UpdateTimerAction
 	| ResetAction
-	| TimerStartAction<T>
-	| RestoreAction<T>
+	| TimerStartAction
+	| RestoreAction
 
-export const initialState: StopWatchStateType<number> = {
+export const initialState: StopWatchStateType = {
 	statusText: null,
 	timerStart: null,
 	timerEnd: null
 }
 
-export const stopwatchReducer = <T extends number>(
+export const stopwatchReducer = (
 	state: typeof initialState = initialState,
-	action: StopwatchAction<T>
+	action: StopwatchAction
 ) => {
 	switch (action.type) {
 		case 'TIMER_START': {
