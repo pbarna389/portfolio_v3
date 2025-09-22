@@ -10,6 +10,10 @@ export const About = () => {
 		textData: { aboutMe }
 	} = useTextContext()
 
+	const splittedText = aboutMe.text.split('\n').map((el, idx) => {
+		return { text: el, key: `par-${idx}` }
+	})
+
 	return (
 		<section
 			ref={ref}
@@ -24,9 +28,15 @@ export const About = () => {
 				/>
 				<div className="relative basis-1/2 flex flex-col justify-center items-center gap-4 sm:flex sm:items-start sm:gap-4  p-4">
 					<Background />
-					<p className="text-justify text-[16px] text-darker-500 sm:text-start sm:text-xl">
-						{aboutMe.text}
-					</p>
+					{splittedText.map(({ text, key }) => (
+						<p
+							key={`${key}`}
+							className="text-justify text-[16px] text-darker-500 items-end sm:text-start sm:text-xl"
+						>
+							{text}
+						</p>
+					))}
+
 					<Button
 						as={Link}
 						href="http://localhost:5173"
