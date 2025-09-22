@@ -51,7 +51,7 @@ export const Form = () => {
 			)
 
 			const currentTime = Date.now()
-			const endTime = currentTime + BASE_COUNTER_TIME
+			const endTime = { expireTime: currentTime + BASE_COUNTER_TIME }
 
 			setHasSubmitted(false)
 			setLocalStorageItem(currentTime, endTime)

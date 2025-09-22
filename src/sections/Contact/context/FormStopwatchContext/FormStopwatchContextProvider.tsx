@@ -16,7 +16,7 @@ export const FormStopwatchContextProvider = ({
 	storageKey
 }: FormStopwatchContextProviderProps) => {
 	const [state, dispatch] = useReducer(stopwatchReducer, initialState)
-	const [, { setItem, removeItem }] = useLocalStorage<number>(storageKey, dispatch)
+	const [, { setItem, removeItem }] = useLocalStorage(storageKey, dispatch)
 
 	const stopwatchContextValue = useMemo(() => {
 		return {
